@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
 
 class App extends Component {
