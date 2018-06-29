@@ -11,8 +11,9 @@ export const fetchAllArticles = () => {
     .then(({articles}) => articles)
 }
 
-export const changeArticleVote = (vote, id) => {
-    const url = `${API_URL}/articles/${id}?vote=${vote}`
+export const changeVote = (vote, id, route) => {
+    const url = `${API_URL}/${route}/${id}?vote=${vote}`
+    console.log('url', url)
     return fetch(url, {
         method: 'PUT'
     })

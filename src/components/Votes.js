@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {changeArticleVote} from '../api';
+import {changeVote} from '../api';
 
 class Votes extends Component {
 
     state = {
         votes: this.props.votes,
-        articleId: this.props.articleId
+        id: this.props.id,
+        route: this.props.route
     }
 
     componentDidMount(){
@@ -14,18 +15,17 @@ class Votes extends Component {
     }
 
     handleUpClick = () => {
-        console.log('votes before', this.state.votes)
         this.setState({votes: this.state.votes + 1})
         // why is this the same as before 
         console.log('votes after', this.state.votes)
-        return changeArticleVote('up', this.state.articleId)
+        return changeVote('up', this.state.id, this.state.route)
         .catch(err => console.log(err))
     }
 
     handleDownClick = () => {
         console.log('in handleDownclick')
         this.setState({votes: this.state.votes - 1})
-        return changeArticleVote('down', this.state.articleId)
+        return changeVote('down', this.state.id, this.state.route)
         .catch(err => console.log(err))
     }
 
