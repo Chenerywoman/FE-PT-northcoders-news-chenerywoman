@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import ArticleList from '../components/ArticleList'
+import * as api from '../api';
 
 class Homepage extends Component {
 
@@ -8,21 +10,20 @@ class Homepage extends Component {
 
   }
 
+
+  fetchArticles = () => {
+    return api
+        .fetchAllArticles()
+        .then(articles => {
+        this.setState({ articles, loading: false })
+        })
+        .catch(error => {
+            this.props.history.push('/No/Match');
+        });
+};
+
   componentDidMount(){
-
-    fetch('https://chenerywoman-northcoders-news.herokuapp.com/api/articles')
-    .then(res => {
-      return res.json()
-    })
-    .then(res => {
-      this.setState({articles: res.articles})
-    })
-    .catch(err => { 
-      console.log(err)
-      if (err) {throw new Error('new error')}
-    }
-    )
-
+    this.fetchArticles()
   }
 
   render() {

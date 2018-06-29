@@ -8,6 +8,6 @@ export const fetchAllArticles = () => {
         if (res.status === 404) throw new Error(res.statusText)
         return res.json()
     })
-    .then({articles} => articles)
+    .then(({articles}) => articles)
 }
 
