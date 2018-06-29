@@ -3,7 +3,6 @@ import Article from './Article';
 
 const ArticleList = ({articles}) => {
 
-
     return (
         <div>
             <h2>Article List</h2>
