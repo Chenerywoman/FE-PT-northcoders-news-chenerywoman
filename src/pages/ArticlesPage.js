@@ -8,14 +8,13 @@ class ArticlesPage extends Component {
     state = {
         articles: [],
         loading: true,
-        topic: ''
     }
 
     fetchArticlesByTopic = (topic) => {
         return api
             .fetchTopicArticles(topic)
             .then(articles => {
-                this.setState({ articles, topic, loading: false })
+                this.setState({ articles, loading: false })
                 })
     }
 
@@ -24,13 +23,23 @@ class ArticlesPage extends Component {
         this.fetchArticlesByTopic(topic)        
     }
 
+    componentDidUpdate(prevProps){
+        const currTopic = this.props.match.params
+        const prevTopic = prevProps.match.params
+
+        if (currTopic !== prevTopic) {
+            this.fetchArticlesByTopic(currTopic)    
+        }
+        
+    }
+
     render() {
         return (
             <div>
                 <h1>Northcoders News</h1>
                 {this.state.loading ? <div>Loading...</div>
                     :
-                    <ArticleList topic={this.state.topic.topic} articles={this.state.articles} />
+                    <ArticleList topic={this.props.match.params.topic} articles={this.state.articles} />
                 }
             </div>
         );

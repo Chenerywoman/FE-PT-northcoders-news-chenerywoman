@@ -1,5 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
+import TopicChooser from './TopicChooser';
 
-const Navbar = () => (<nav> <h2>Navbar</h2> </nav>)
+const Navbar = () => (<nav> 
+    <h2>Navbar</h2> 
+    <TopicChooser />
+</nav>)
 
 export default Navbar;
