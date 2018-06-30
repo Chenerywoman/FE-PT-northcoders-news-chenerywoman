@@ -24,7 +24,6 @@ class ArticlesPage extends Component {
 
     componentDidMount() {
         const topic = this.props.match.params.topic
-        console.log('topic', topic)
         this.fetchArticlesByTopic(topic)
     }
 

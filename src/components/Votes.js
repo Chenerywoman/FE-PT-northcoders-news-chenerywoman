@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {changeVote} from '../api';
+import PropTypes from 'prop-types';
 
 class Votes extends Component {
 
@@ -14,10 +15,9 @@ class Votes extends Component {
 // do I need this?
     }
 
+
     handleUpClick = () => {
         this.setState({votes: this.state.votes + 1})
-        // why is this the same as before 
-        console.log('votes after', this.state.votes)
         return changeVote('up', this.state.id, this.state.route)
         .catch(err => {
             console.log(err)
@@ -46,5 +46,12 @@ class Votes extends Component {
         )
     }
 }
+
+Votes.propTypes = {
+    votes: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    route: PropTypes.string.isRequired
+}
+
 
 export default Votes;

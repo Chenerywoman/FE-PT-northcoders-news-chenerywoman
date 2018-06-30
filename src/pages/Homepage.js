@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import ArticleList from '../components/ArticleList'
 import * as api from '../api';
 
-class Homepage extends Component {
+class HomePage extends Component {
 
   state = {
     articles: [],
@@ -40,4 +41,8 @@ q
   }
 }
 
-export default Homepage;
+HomePage.propTypes = {
+  history: PropTypes.object.isRequired
+}
+
+export default HomePage;
