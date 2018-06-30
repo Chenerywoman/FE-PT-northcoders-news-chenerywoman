@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
 import Navbar from './components/Navbar';
-import Homepage from './pages/Homepage';
+import HomePage from './pages/HomePage';
+import ArticlesPage from './pages/ArticlesPage';
 
 class App extends Component {
 
@@ -15,7 +16,8 @@ class App extends Component {
                 <React.Fragment>
                 <Navbar />
                     <Switch>
-                        <Route exact path='/' component={Homepage} />
+                        <Route exact path='/' component={HomePage} />
+                        <Route path='/topics/:topic/articles' component={ArticlesPage} />
                     </Switch>
                 </React.Fragment>
             </BrowserRouter>

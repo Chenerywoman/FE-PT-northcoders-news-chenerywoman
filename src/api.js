@@ -5,10 +5,31 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const fetchAllArticles = () => {
     return fetch(`${API_URL}/articles`)
     .then(res => {
-        if (res.status === 404) throw new Error(res.statusText)
+        if (res.status === 404) throw new Error(res.statusText) 
         return res.json()
     })
     .then(({articles}) => articles)
+    .catch(err => {console.log('err', err)})
+}
+
+export const fetchTopicArticles = (topicName) => {
+    return fetch(`${API_URL}/topics`)
+    .then(res => {
+        if (res.status === 404) throw new Error(res.statusText)
+        return res.json()
+    })
+    .then((res) => {
+        const topic = res.topics.find(topic => topic.title.toLowerCase() === topicName.topic.toLowerCase())
+        if (topic === undefined) throw new Error('topic does not exist')
+        else return fetch(`${API_URL}/topics/${topic._id}/articles`)
+    })
+    .then(res => {
+        if (res.status !== 200) throw new Error(res.statusText)
+        return res.json()
+    })
+    .then(({articles}) => articles)
+    .catch(err => {console.log('err', err)})
+
 }
 
 export const changeVote = (vote, id, route) => {
@@ -22,4 +43,5 @@ export const changeVote = (vote, id, route) => {
         return res.json();
     })
     .then(res => console.log(res))
+    .catch(err => {console.log('err', err)})
 }
