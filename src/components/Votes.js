@@ -19,14 +19,19 @@ class Votes extends Component {
         // why is this the same as before 
         console.log('votes after', this.state.votes)
         return changeVote('up', this.state.id, this.state.route)
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            this.setState({votes: this.state.votes - 1})
+        })
     }
 
     handleDownClick = () => {
-        console.log('in handleDownclick')
         this.setState({votes: this.state.votes - 1})
         return changeVote('down', this.state.id, this.state.route)
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            this.setState({votes: this.state.votes + 1})
+        })
     }
 
     render() {
