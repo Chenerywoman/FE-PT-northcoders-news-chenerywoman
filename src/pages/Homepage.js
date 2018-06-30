@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ArticleList from '../components/ArticleList'
-import * as api from '../api';
+import {fetchAllArticles} from '../api';
 
 class HomePage extends Component {
 
@@ -12,8 +12,7 @@ class HomePage extends Component {
   }
 
   fetchArticles = () => {
-    return api
-      .fetchAllArticles()
+    return fetchAllArticles()
       .then(articles => {
         this.setState({ articles, loading: false })
       })
