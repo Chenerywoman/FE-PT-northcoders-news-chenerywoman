@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import ArticleList from '../components/ArticleList'
 import * as api from '../api';
@@ -22,14 +23,15 @@ class ArticlesPage extends Component {
     }
 
     componentDidMount() {
-        const topic = this.props.match.params
+        const topic = this.props.match.params.topic
+        console.log('topic', topic)
         this.fetchArticlesByTopic(topic)
     }
 
     componentDidUpdate(prevProps) {
        
-        const currTopic = this.props.match.params
-        const prevTopic = prevProps.match.params
+        const currTopic = this.props.match.params.topic
+        const prevTopic = prevProps.match.params.topic
 
         if (currTopic !== prevTopic) {
             this.setState({loading: true})
@@ -48,6 +50,15 @@ class ArticlesPage extends Component {
             </div>
         );
     }
+}
+
+ArticlesPage.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            topic: PropTypes.string.isRequired
+        })
+    }),
+    history: PropTypes.object.isRequired
 }
 
 export default ArticlesPage;
