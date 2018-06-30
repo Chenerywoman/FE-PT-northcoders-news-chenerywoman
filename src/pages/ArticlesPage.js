@@ -27,13 +27,14 @@ class ArticlesPage extends Component {
     }
 
     componentDidUpdate(prevProps) {
+       
         const currTopic = this.props.match.params
         const prevTopic = prevProps.match.params
 
         if (currTopic !== prevTopic) {
+            this.setState({loading: true})
             this.fetchArticlesByTopic(currTopic)
         }
-
     }
 
     render() {
