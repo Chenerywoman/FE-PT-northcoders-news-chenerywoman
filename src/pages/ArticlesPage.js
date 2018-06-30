@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ArticleList from '../components/ArticleList'
-import * as api from '../api';
+import {fetchTopicArticles} from '../api';
 
 class ArticlesPage extends Component {
 
@@ -12,8 +12,8 @@ class ArticlesPage extends Component {
     }
 
     fetchArticlesByTopic = (topic) => {
-        return api
-            .fetchTopicArticles(topic)
+       
+        return fetchTopicArticles(topic)
             .then(articles => {
                 this.setState({ articles, loading: false })
             })
