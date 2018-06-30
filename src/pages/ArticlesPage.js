@@ -41,7 +41,6 @@ class ArticlesPage extends Component {
     render() {
         return (
             <div>
-                <h1>Northcoders News</h1>
                 {this.state.loading ? <div>Loading...</div>
                     :
                     <ArticleList topic={this.props.match.params.topic} articles={this.state.articles} />

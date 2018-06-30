@@ -29,13 +29,10 @@ q
   render() {
     return (
       <div>
-        <header>
-          <h1>Northcoders News</h1>
           {this.state.loading ? <div>Loading...</div>
             :
             <ArticleList topic='' articles={this.state.articles} />
           }
-        </header>
       </div>
     );
   }

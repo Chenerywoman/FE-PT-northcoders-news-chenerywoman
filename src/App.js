@@ -14,6 +14,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <React.Fragment>
+                <h1>Northcoders News</h1>
                 <Navbar />
                     <Switch>
                         <Route exact path='/' component={HomePage} />
