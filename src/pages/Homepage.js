@@ -7,9 +7,9 @@ class Homepage extends Component {
 
   state = {
     articles: [],
+    loading: true
 
   }
-
 
   fetchArticles = () => {
     return api
@@ -18,7 +18,7 @@ class Homepage extends Component {
         this.setState({ articles, loading: false })
         })
         .catch(error => {
-            this.props.history.push('/No/Match');
+            this.props.history.push('/404');
         });
 };
 
@@ -31,7 +31,10 @@ class Homepage extends Component {
       <div>
         <header>
           <h1>Northcoders News</h1>
-          <ArticleList articles={this.state.articles}/>
+          {this.state.loading ? <div>Loading...</div>
+                    :
+                    <ArticleList articles={this.state.articles} />
+                }
         </header>
       </div>
     );
