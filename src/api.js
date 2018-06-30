@@ -19,7 +19,7 @@ export const fetchTopicArticles = (topicName) => {
         return res.json()
     })
     .then((res) => {
-        const topic = res.topics.find(topic => topic.title.toLowerCase() === topicName.topic.toLowerCase())
+        const topic = res.topics.find(topic => topic.title.toLowerCase() === topicName.toLowerCase())
         if (topic === undefined) throw new Error('topic does not exist')
         else return fetch(`${API_URL}/topics/${topic._id}/articles`)
     })
