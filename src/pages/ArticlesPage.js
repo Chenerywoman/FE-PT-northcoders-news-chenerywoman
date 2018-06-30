@@ -7,16 +7,15 @@ class ArticlesPage extends Component {
 
     state = {
         articles: [],
-        loading: true
+        loading: true,
+        topic: ''
     }
 
     fetchArticlesByTopic = (topic) => {
         return api
             .fetchTopicArticles(topic)
             .then(articles => {
-                console.log('articles', articles)
-                this.setState({ articles, loading: false })
-                console.log('articles state', this.state.articles)
+                this.setState({ articles, topic, loading: false })
                 })
     }
 
@@ -31,7 +30,7 @@ class ArticlesPage extends Component {
                 <h1>Northcoders News</h1>
                 {this.state.loading ? <div>Loading...</div>
                     :
-                    <ArticleList articles={this.state.articles} />
+                    <ArticleList topic={this.state.topic.topic} articles={this.state.articles} />
                 }
             </div>
         );

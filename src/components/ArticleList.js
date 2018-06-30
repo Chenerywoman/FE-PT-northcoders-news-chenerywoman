@@ -1,11 +1,11 @@
 import React from 'react';
 import Article from './Article';
 
-const ArticleList = ({articles}) => {
-
+const ArticleList = ({articles, topic}) => {
+console.log('topic', topic)
     return (
         <div>
-            <h2>Article List</h2>
+            <h2>Articles {topic ? <span> about {topic} </span> : '' } </h2>
             {articles.map(article => 
               <Article key={article._id} article={article}/>
             )}
