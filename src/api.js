@@ -48,7 +48,6 @@ export const fetchArticleById = (id) => {
 
 export const changeVote = (vote, id, route) => {
     const url = `${API_URL}/${route}/${id}?vote=${vote}`
-    console.log('url', url)
     return fetch(url, {
         method: 'PUT'
     })
@@ -56,6 +55,5 @@ export const changeVote = (vote, id, route) => {
         if (res.status === 400 || res.status === 404) throw new Error(res.statusText)
         return res.json();
     })
-    .then(res => console.log(res))
     .catch(err => {console.log('err', err)})
 }
