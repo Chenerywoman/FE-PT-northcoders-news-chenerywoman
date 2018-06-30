@@ -12,16 +12,16 @@ class Homepage extends Component {
 
   fetchArticles = () => {
     return api
-        .fetchAllArticles()
-        .then(articles => {
+      .fetchAllArticles()
+      .then(articles => {
         this.setState({ articles, loading: false })
-        })
-        .catch(error => {
-            this.props.history.push('/404');
-        });
-};
-
-  componentDidMount(){
+      })
+      .catch(error => {
+        this.props.history.push('/404');
+      });
+  };
+q
+  componentDidMount() {
     this.fetchArticles()
   }
 
@@ -31,9 +31,9 @@ class Homepage extends Component {
         <header>
           <h1>Northcoders News</h1>
           {this.state.loading ? <div>Loading...</div>
-                    :
-                    <ArticleList topic='' articles={this.state.articles} />
-                }
+            :
+            <ArticleList topic='' articles={this.state.articles} />
+          }
         </header>
       </div>
     );

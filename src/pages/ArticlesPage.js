@@ -15,22 +15,25 @@ class ArticlesPage extends Component {
             .fetchTopicArticles(topic)
             .then(articles => {
                 this.setState({ articles, loading: false })
-                })
+            })
+            .catch(error => {
+                this.props.history.push('/404');
+            });
     }
 
     componentDidMount() {
         const topic = this.props.match.params
-        this.fetchArticlesByTopic(topic)        
+        this.fetchArticlesByTopic(topic)
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps) {
         const currTopic = this.props.match.params
         const prevTopic = prevProps.match.params
 
         if (currTopic !== prevTopic) {
-            this.fetchArticlesByTopic(currTopic)    
+            this.fetchArticlesByTopic(currTopic)
         }
-        
+
     }
 
     render() {
