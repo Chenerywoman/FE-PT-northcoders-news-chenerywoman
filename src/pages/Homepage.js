@@ -8,7 +8,6 @@ class Homepage extends Component {
   state = {
     articles: [],
     loading: true
-
   }
 
   fetchArticles = () => {
