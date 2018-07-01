@@ -2,28 +2,42 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 import Article from '../components/Article';
-import InputBox from '../components/InputBox'
-import { fetchArticleById } from '../api'
+import InputBox from '../components/InputBox';
+import CommentsList from '../components/CommentsList';
+
+import { fetchArticleById, fetchCommentsForArticle } from '../api'
 
 class ArticlePage extends Component {
 
     state = {
         article: {},
+        comments: [],
         loading: true
     }
 
     fetchArticle = (id) => {
         return fetchArticleById(id)
             .then(article => {
-                this.setState({ article, loading: false })
+                this.setState({ article})
             })
             .catch(error => this.props.history.push('/404'))
 
     }
 
+    fetchComments = (id) => {
+        return fetchCommentsForArticle(id)
+        .then(comments => {
+            this.setState({comments, loading: false})
+        })
+        .catch(error => this.props.history.push('/404'))
+
+    }
+
+
     componentDidMount() {
         const articleId = this.props.match.params.id;
-        this.fetchArticle(articleId)
+        return this.fetchArticle(articleId)
+        .then(() => this.fetchComments(articleId));
     }
 
     render() {
@@ -33,10 +47,13 @@ class ArticlePage extends Component {
                 <Article key={article._id} article={article} />
             }
             <InputBox route='articles' id={this.props.match.params.id} endpoint='comments' />
-            <p>commentsList</p>
+            {loading ? <p>Loading...</p> :
+            <CommentsList  comments={this.state.comments}/>
+            }
         </div>
         )
-    }
+    
+}
 }
 
 ArticlePage.propTypes = {
