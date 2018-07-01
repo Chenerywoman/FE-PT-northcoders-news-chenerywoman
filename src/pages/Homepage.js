@@ -20,7 +20,7 @@ class HomePage extends Component {
         this.props.history.push('/404');
       });
   };
-q
+
   componentDidMount() {
     this.fetchArticles()
   }
