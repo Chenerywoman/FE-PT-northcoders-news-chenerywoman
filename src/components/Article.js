@@ -1,15 +1,17 @@
 import React from 'react';
 import Votes from '../components/Votes';
+import User from './User';
+
+import {Link} from 'react-router-dom';
 
 const Article = ({article}) => {
 
     return (
         <div>
-            <p>{article._id}</p>
+           <Link key={article._id} to={`/articles/${article._id}`}>  <p>{article._id}</p> < /Link>
              <h4>{article.title}</h4> 
+             <User user={article.created_by.username} avatar={article.created_by.avatar_url} />
             <div>topic:{article.belongs_to.title}</div>
-     <p>created by: {article.created_by.username}</p>
-     <div>{article.created_by.avatar_url}</div>
           <p>{article.body}</p>
           <p>comments: {article.comments}</p>
           <Votes votes={article.votes} id={article._id} route="articles"/> 
