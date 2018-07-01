@@ -9,6 +9,7 @@ const Article = ({article}) => {
              <h4>{article.title}</h4> 
             <div>topic:{article.belongs_to.title}</div>
      <p>created by: {article.created_by.username}</p>
+     <div>{article.created_by.avatar_url}</div>
           <p>{article.body}</p>
           <p>comments: {article.comments}</p>
           <Votes votes={article.votes} id={article._id} route="articles"/> 

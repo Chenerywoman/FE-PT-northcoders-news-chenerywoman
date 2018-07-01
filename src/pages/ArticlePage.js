@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 import Article from '../components/Article';
+import InputBox from '../components/InputBox'
 import { fetchArticleById } from '../api'
 
 class ArticlePage extends Component {
@@ -31,7 +32,7 @@ class ArticlePage extends Component {
             {loading ? <p>Loading...</p> :
                 <Article key={article._id} article={article} />
             }
-            <p>CommentBox</p>
+            <InputBox route='articles' id={this.props.match.params.id} endpoint='comments' />
             <p>commentsList</p>
         </div>
         )
