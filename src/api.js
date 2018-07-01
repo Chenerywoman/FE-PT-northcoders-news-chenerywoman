@@ -1,7 +1,5 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-// put fetches in here
-
 export const fetchAllArticles = () => {
     const url = `${API_URL}/articles`
     return fetch(url)
@@ -57,3 +55,18 @@ export const changeVote = (vote, id, route) => {
     })
     .catch(err => {console.log('err', err)})
 }
+
+// n.b. to reuse for posting article refactor keys inside body (add title, body instead of comment) - see BE
+export const postText = (created_by, comment, route, id, endpoint) => {
+    const url = `${API_URL}/${route}/${id}/${endpoint}`
+    const body = {created_by, comment}
+    fetch((url), {
+        method: 'POST',
+        body: JSON.stringify(body), 
+        headers: {'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
+    .then(res => console.log('newComment', res))
+    .catch(err => {console.log(err)})
+}
+
