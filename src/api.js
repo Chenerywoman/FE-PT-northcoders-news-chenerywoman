@@ -8,7 +8,6 @@ export const fetchAllArticles = () => {
             else return res.json()
         })
         .then(({ articles }) => articles)
-        .catch(err => { console.log('err', err) })
 }
 
 export const fetchTopicArticles = (topicName) => {
@@ -28,8 +27,6 @@ export const fetchTopicArticles = (topicName) => {
             else return res.json()
         })
         .then(({ articles }) => articles)
-        .catch(err => { console.log('err', err) })
-
 }
 
 export const fetchArticleById = (id) => {
@@ -40,7 +37,6 @@ export const fetchArticleById = (id) => {
             else return res.json()
         })
         .then(({ article }) => article)
-        .catch(err => console.log(err))
 }
 
 export const fetchCommentsForArticle = (id) => {
@@ -51,7 +47,6 @@ export const fetchCommentsForArticle = (id) => {
             else return res.json()
         })
         .then(({ comments }) => comments)
-        .catch(err => console.log(err))
 }
 
 export const changeVote = (vote, id, route) => {
@@ -65,7 +60,6 @@ export const changeVote = (vote, id, route) => {
             else return res.json()
         })
         .then(res => console.log(res))
-        .catch(err => { console.log('err', err) })
 }
 
 // n.b. try to reuse for posting article refactor keys inside body (add title, body instead of comment) - see BE
@@ -96,6 +90,4 @@ export const deleteText = (id, username) => {
         if (res.status !== 200 ) throw new Error(res.statusText)
         else return res.json()
     })
-    .catch(err => console.log(err))
-
 }
