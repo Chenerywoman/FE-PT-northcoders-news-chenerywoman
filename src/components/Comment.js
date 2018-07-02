@@ -4,7 +4,7 @@ import User from './User';
 import Votes from './Votes';
 import DeleteComment from './DeleteComment';
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, deleteComment }) => {
 // console.log('comment', comment.created_by.username)
     return (
         <div>
@@ -12,7 +12,7 @@ const Comment = ({ comment }) => {
             <p>{comment.body}</p>
             <Votes votes={comment.votes} id={comment._id} route='comments' />
             <User name={comment.created_by.username} avatar={comment.created_by.avatar_url} />
-            <DeleteComment id={comment._id}/>
+            <DeleteComment id={comment._id} deleteComment={deleteComment}/>
         </div>
     )
 }
