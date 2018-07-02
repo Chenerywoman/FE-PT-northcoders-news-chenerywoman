@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {changeVote} from '../api';
+import {changeVote} from '../dataFunctions/api';
 import PropTypes from 'prop-types';
 
 class Votes extends Component {
@@ -10,17 +10,10 @@ class Votes extends Component {
         route: this.props.route
     }
 
-    componentDidMount(){
-
-// do I need this?
-    }
-
-
     handleUpClick = () => {
         this.setState({votes: this.state.votes + 1})
         return changeVote('up', this.state.id, this.state.route)
         .catch(err => {
-            console.log(err)
             this.setState({votes: this.state.votes - 1})
         })
     }
