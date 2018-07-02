@@ -1,3 +1,5 @@
+import * as helpers from './helpers'
+
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const fetchAllArticles = () => {
@@ -7,7 +9,9 @@ export const fetchAllArticles = () => {
             if (res.status === 404) throw new Error(res.statusText)
             else return res.json()
         })
-        .then(({ articles }) => articles)
+        .then(({ articles }) => {
+           return helpers.mostPopular(articles)
+        })
 }
 
 export const fetchTopicArticles = (topicName) => {
