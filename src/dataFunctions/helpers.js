@@ -21,3 +21,16 @@ export const mostRecent = (comments) => {
 
 })
 }
+
+export const chunkArray = (array, chunk) => {
+
+    const newArray = [...array]
+
+    let results = [];
+    
+    while (newArray.length) {
+        results.push(newArray.splice(0, chunk));
+    }
+    
+    return results;
+}
