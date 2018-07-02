@@ -11,8 +11,10 @@ return (
 )
 }
 
-User.propTypes = () => {
+User.propTypes = {
 
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired
     
 }
 
