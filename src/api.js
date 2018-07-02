@@ -71,7 +71,6 @@ export const changeVote = (vote, id, route) => {
 // n.b. to reuse for posting article refactor keys inside body (add title, body instead of comment) - see BE
 export const postText = (created_by, comment, route, id, endpoint) => {
     const url = `${API_URL}/${route}/${id}/${endpoint}`
-    console.log('url', url)
     const body = { created_by, comment }
     return fetch((url), {
         method: 'POST',
@@ -83,7 +82,6 @@ export const postText = (created_by, comment, route, id, endpoint) => {
             else return res.json()
         })
         .then(res => {
-            console.log('res', res)
             return res
         })
         .catch(err => { console.log(err) })
