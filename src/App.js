@@ -17,7 +17,6 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/' render={props => (< HomePage />)} />
                         <Route exact path='/articles' render={props => (<MainPage {...props} /> )} /> 
-                        <Route path ='/articles/page/:page'render={props => <ArticlesPage {...props} />} />
                         <Route path='/topics/:topic/articles' render={props => <ArticlesPage {...props} />} />
                         <Route path='/articles/:id' render={props => <ArticlePage {...props}/>} />
                         <Route component={NoMatchPage} />
