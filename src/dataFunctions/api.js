@@ -30,7 +30,9 @@ export const fetchTopicArticles = (topicName) => {
             if (res.status !== 200) throw new Error(res.statusText)
             else return res.json()
         })
-        .then(({ articles }) => articles)
+        .then(({ articles }) => {
+            return helpers.mostPopular(articles)
+         })
 }
 
 export const fetchArticleById = (id) => {
