@@ -68,11 +68,11 @@ export const changeVote = (vote, id, route) => {
         .catch(err => { console.log('err', err) })
 }
 
-// n.b. to reuse for posting article refactor keys inside body (add title, body instead of comment) - see BE
+// n.b. try to reuse for posting article refactor keys inside body (add title, body instead of comment) - see BE
 export const postText = (created_by, comment, route, id, endpoint) => {
     const url = `${API_URL}/${route}/${id}/${endpoint}`
     const body = { created_by, comment }
-    return fetch((url), {
+    return fetch(url, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
@@ -87,3 +87,23 @@ export const postText = (created_by, comment, route, id, endpoint) => {
         .catch(err => { console.log(err) })
 }
 
+export const deleteText = (id, username) => {
+    console.log('username', username)
+    const url = `${API_URL}/comments/${id}`
+    return fetch(url)
+    .then(res => {
+        if (res.status !== 200 ) throw new Error(res.statusText)
+        else return res.json()
+    })
+    .then(res => {
+        console.log('first res', res)
+        if (res.comment.created_by.username !== username.toLowerCase() ){throw new Error('only user who created comment can delete it')}
+        else {return fetch(url, {method: 'DELETE'})}
+    })
+    .then(res => {
+        if (res.status !== 200 ) throw new Error(res.statusText)
+        else return res.json()
+    })
+    .catch(err => console.log(err))
+
+}
