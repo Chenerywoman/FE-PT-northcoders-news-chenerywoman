@@ -52,8 +52,6 @@ export const fetchCommentsForArticle = (id) => {
         })
         .then(({ comments }) => comments)
         .catch(err => console.log(err))
-
-
 }
 
 export const changeVote = (vote, id, route) => {
@@ -73,14 +71,21 @@ export const changeVote = (vote, id, route) => {
 // n.b. to reuse for posting article refactor keys inside body (add title, body instead of comment) - see BE
 export const postText = (created_by, comment, route, id, endpoint) => {
     const url = `${API_URL}/${route}/${id}/${endpoint}`
+    console.log('url', url)
     const body = { created_by, comment }
-    fetch((url), {
+    return fetch((url), {
         method: 'POST',
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
     })
-        .then(res => res.json())
-        .then(res => console.log('newComment', res))
+        .then(res => {
+            if (res.status !== 201) throw new Error(res.statusText)
+            else return res.json()
+        })
+        .then(res => {
+            console.log('res', res)
+            return res
+        })
         .catch(err => { console.log(err) })
 }
 
