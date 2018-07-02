@@ -77,14 +77,7 @@ export const postText = (created_by, comment, route, id, endpoint) => {
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
     })
-        .then(res => {
-            if (res.status !== 201) throw new Error(res.statusText)
-            else return res.json()
-        })
-        .then(res => {
-            return res
-        })
-        .catch(err => { console.log(err) })
+        .then(res => res.json())       
 }
 
 export const deleteText = (id, username) => {
@@ -96,7 +89,6 @@ export const deleteText = (id, username) => {
         else return res.json()
     })
     .then(res => {
-        console.log('first res', res)
         if (res.comment.created_by.username !== username.toLowerCase() ){throw new Error('only user who created comment can delete it')}
         else {return fetch(url, {method: 'DELETE'})}
     })
