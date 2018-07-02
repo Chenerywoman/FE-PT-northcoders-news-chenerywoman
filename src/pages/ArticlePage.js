@@ -5,7 +5,7 @@ import Article from '../components/Article';
 import InputBox from '../components/InputBox';
 import CommentsList from '../components/CommentsList';
 
-import { fetchArticleById, fetchCommentsForArticle, postText } from '../api'
+import { fetchArticleById, fetchCommentsForArticle, postText, deleteText } from '../api'
 
 class ArticlePage extends Component {
 
@@ -40,6 +40,20 @@ class ArticlePage extends Component {
         })
     }
 
+    deleteComment = (id, username) => {
+        return deleteText(id, username)
+        .then(({deleted_comment}) => {
+            const indexToDelete = this.state.comments.findIndex(comment => comment._id === deleted_comment._id)
+            const amendedComments = [...this.state.comments]
+            amendedComments.splice(indexToDelete, 1)
+         
+            this.setState({
+                comments: amendedComments
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
     componentDidMount() {
         const articleId = this.props.match.params.id;
         return this.fetchArticle(articleId)
@@ -55,7 +69,7 @@ class ArticlePage extends Component {
             }
             <InputBox  postComment={this.postComment}/>
             {loading ? <p>Loading...</p> :
-            <CommentsList  comments={this.state.comments}/>
+            <CommentsList  comments={this.state.comments} deleteComment={this.deleteComment}/>
             }
         </div>
         )
