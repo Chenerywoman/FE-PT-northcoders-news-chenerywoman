@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import {HomePage, ArticlesPage, ArticlePage, NoMatchPage} from './pages';
+import {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage} from './pages';
 import Navbar from './components/Navbar'
 
 class App extends Component {
@@ -15,9 +15,10 @@ class App extends Component {
                 <h1>Northcoders News</h1>
                 <Navbar />
                     <Switch>
-                        <Route exact path='/' component={HomePage} />
-                        <Route path='/topics/:topic/articles' component={ArticlesPage} />
-                        <Route path='/articles/:id' component={ArticlePage}/>
+                        <Route exact path='/' render={props => (< HomePage />)} />
+                        <Route exact path='/articles' render={props => (<MainPage {...props} /> )} /> 
+                        <Route path='/topics/:topic/articles' render={props => <ArticlesPage {...props} />} />
+                        <Route path='/articles/:id' render={props => <ArticlePage {...props}/>} />
                         <Route component={NoMatchPage} />
                     </Switch>
                 </React.Fragment>
