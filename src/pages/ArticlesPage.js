@@ -15,7 +15,8 @@ class ArticlesPage extends Component {
        
         return fetchTopicArticles(topic)
             .then(articles => {
-                this.setState({ articles, loading: false })
+                console.log(articles)
+                this.setState({articles, loading: false })
             })
             .catch(error => {
                 this.props.history.push('/404');
@@ -39,11 +40,13 @@ class ArticlesPage extends Component {
     }
 
     render() {
+        const queryString =  /\d/.exec(this.props.location.search);
+        const page = this.props.location.search ? queryString[0] - 1: 0;
         return (
             <div>
                 {this.state.loading ? <div>Loading...</div>
                     :
-                    <ArticleList topic={this.props.match.params.topic} articles={this.state.articles} />
+                    <ArticleList topic={this.props.match.params.topic} articles={this.state.articles[page]} />
                 }
             </div>
         );
