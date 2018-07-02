@@ -5,7 +5,7 @@ import Article from '../components/Article';
 import InputBox from '../components/InputBox';
 import CommentsList from '../components/CommentsList';
 
-import { fetchArticleById, fetchCommentsForArticle, postText, deleteText } from '../api'
+import { fetchArticleById, fetchCommentsForArticle, postText, deleteText } from '../dataFunctions/api'
 
 class ArticlePage extends Component {
 

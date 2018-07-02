@@ -1,44 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 
-import ArticleList from '../components/ArticleList'
-import {fetchAllArticles} from '../api';
+class Homepage extends Component {
 
-class HomePage extends Component {
-
-  state = {
-    articles: [],
-    loading: true
-  }
-
-  fetchArticles = () => {
-    return fetchAllArticles()
-      .then(articles => {
-        this.setState({ articles, loading: false })
-      })
-      .catch(error => {
-        this.props.history.push('/404');
-      });
-  };
-
-  componentDidMount() {
-    this.fetchArticles()
-  }
-
-  render() {
-    return (
-      <div>
-          {this.state.loading ? <div>Loading...</div>
-            :
-            <ArticleList topic='' articles={this.state.articles} />
-          }
-      </div>
-    );
-  }
+render(){
+   return ( 
+   <div>Here's the Homepage</div>
+)
 }
 
-HomePage.propTypes = {
-  history: PropTypes.object.isRequired
 }
 
-export default HomePage;
+export default Homepage
