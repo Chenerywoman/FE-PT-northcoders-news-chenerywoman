@@ -10,7 +10,8 @@ export const fetchAllArticles = () => {
             else return res.json()
         })
         .then(({ articles }) => {
-           return helpers.mostPopular(articles)
+           const sortedArticles = helpers.mostPopular(articles)
+           return helpers.chunkArray(sortedArticles, 10)
         })
 }
 
