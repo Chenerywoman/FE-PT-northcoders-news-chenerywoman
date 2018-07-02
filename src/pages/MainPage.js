@@ -8,13 +8,13 @@ class MainPage extends Component {
 
   state = {
     articles: [],
-    loading: true
+    loading: true, 
   }
 
   fetchArticles = () => {
     return fetchAllArticles()
       .then(articles => {
-        this.setState({ articles, loading: false })
+        this.setState({ articles: articles, loading: false })
       })
       .catch(error => {
         this.props.history.push('/404');
@@ -26,11 +26,13 @@ class MainPage extends Component {
   }
 
   render() {
+    const queryString =  /\d/.exec(this.props.location.search)[0] - 1
+    const page = this.props.location.search ? queryString : 0
     return (
       <div>
           {this.state.loading ? <div>Loading...</div>
             :
-            <ArticleList topic='' articles={this.state.articles} />
+            <ArticleList topic='' articles={this.state.articles[page]} />
           }
       </div>
     );
