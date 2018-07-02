@@ -8,7 +8,6 @@ state = {
     text: '',
 }
 
-// change this for multiple inputs
 handleTextChange = event => {
   this.setState({text:event.target.value})
 }
