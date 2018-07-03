@@ -8,9 +8,9 @@ class TopicChooser extends Component {
     return (
         <React.Fragment>
        <p> Choose a topic:</p>
-            <Link to='/topics/coding/articles' > <button>coding</button> </Link>
-            <Link to='/topics/football/articles' > <button>football</button> </Link>
-            <Link to='/topics/cooking/articles' > <button>cooking</button> </Link>
+            <Link to='/articles/coding' > <button>coding</button> </Link>
+            <Link to='/articles/football' > <button>football</button> </Link>
+            <Link to='/articles/cooking' > <button>cooking</button> </Link>
         </React.Fragment >
     )
 }
