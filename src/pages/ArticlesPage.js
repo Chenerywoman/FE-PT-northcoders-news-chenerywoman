@@ -61,7 +61,7 @@ class ArticlesPage extends Component {
     render() {
         return (
             <div>
-                <Navbar username={this.props.username}/>
+                <Navbar username={this.props.username} topic={this.props.match.params.topic}/>
                 {this.state.loading ? <div>Loading...</div>
                     :
                     <div>
