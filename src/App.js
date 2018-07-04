@@ -5,15 +5,21 @@ import {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage, PostArticleP
 
 class App extends Component {
 
-    state = {username: 'tickle122'}
+    state = {username: ''}
 
+    logUser = (username) => {
+        this.setState({username})
+    }
+
+    
     render() {
+        console.log('username', this.state.username)
         return (
             <BrowserRouter>
                 <React.Fragment>
                 <h1>Northcoders News</h1>
                     <Switch>
-                        <Route exact path='/' render={props => (< HomePage />)} />
+                        <Route exact path='/' render={props => (< HomePage logUser={this.logUser}/>)} />
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
                         <Route path='/articles/topic/:topic' render={props => <ArticlesPage username={this.state.username} {...props} />} />
                         <Route path='/articles/postarticle' render={props => <PostArticlePage username={this.state.username} {...props} />} />
