@@ -14,7 +14,6 @@ state = {
 getUsers = () => {
     return getAllUsers()
     .then(users => {
-        console.log('users', users)
         this.setState({users: users})}
     )
 }
@@ -36,16 +35,14 @@ handleSubmit = event => {
 render(){
    return ( 
     <div>
-   <div>Here's the Homepage</div>
    <Link to={`/articles`} > <p>articles</p> </Link> 
    <form onSubmit={this.handleSubmit}>
    <label>
-     Pick your favorite flavor:
+     Select your username:
      <select value={this.state.value} onChange={this.handleChange}>
      {this.state.users.map(user => <option value={user.username}> {user.username}</option>)}
      </select>
    </label>
-     
    <input type="submit" value="Submit" />
  </form>
     </div>
