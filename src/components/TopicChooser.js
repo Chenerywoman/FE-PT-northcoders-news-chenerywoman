@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 class TopicChooser extends Component {
 
     render () {
-        console.log('this.props.topic', this.props.topic)
     return (
         <React.Fragment>
        <p> Choose another topic:</p> 
