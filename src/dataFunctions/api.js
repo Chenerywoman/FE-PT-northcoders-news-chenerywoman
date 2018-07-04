@@ -82,7 +82,6 @@ export const postText = (created_by, comment, route, id, endpoint) => {
 }
 
 export const deleteText = (id, username) => {
-    console.log('username', username)
     const url = `${API_URL}/comments/${id}`
     return fetch(url)
     .then(res => {
