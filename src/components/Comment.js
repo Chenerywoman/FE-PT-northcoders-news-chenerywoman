@@ -5,7 +5,6 @@ import Votes from './Votes';
 import DeleteComment from './DeleteComment';
 
 const Comment = ({ comment, deleteComment, username }) => {
-// console.log('comment', comment.created_by.username)
     return (
         <div>
             <p> date:{comment.created_at} </p>
@@ -13,7 +12,7 @@ const Comment = ({ comment, deleteComment, username }) => {
             <Votes votes={comment.votes} id={comment._id} route='comments' />
             <User name={comment.created_by.username} avatar={comment.created_by.avatar_url} />
             { username === comment.created_by.username ?
-            <DeleteComment name={comment.created_by.username} id={comment._id} deleteComment={deleteComment}/>
+            <DeleteComment name={comment.created_by.username} id={comment._id} deleteComment={deleteComment} username={username}/>
             : <div></div>
             }
         </div>
