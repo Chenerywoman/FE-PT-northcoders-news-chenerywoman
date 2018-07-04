@@ -1,8 +1,8 @@
 import React from 'react';
 import TopicChooser from './TopicChooser';
 
-const Navbar = () => (<nav> 
-    <h2>Navbar</h2> 
+const Navbar = ({username}) => (<nav> 
+    <h2>Logged in as {username}</h2> 
     <TopicChooser />
 </nav>)
 
