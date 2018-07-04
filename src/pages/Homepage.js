@@ -23,7 +23,6 @@ componentDidMount(){
 }
 
 handleChange = (event) => {
-    console.log(event)
     this.setState({value: event.target.value});
   }
 
