@@ -11,6 +11,19 @@ class App extends Component {
         this.setState({username})
     }
 
+    componentDidMount(){
+    
+        if (localStorage.username) {
+            console.log('localStorage', localStorage.username)
+        this.setState({username: localStorage.username})
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (prevState.username !== this.state.username) {
+            return localStorage.setItem('username', this.state.username)
+        }
+    }
     
     render() {
         console.log('username', this.state.username)
