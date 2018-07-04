@@ -59,7 +59,6 @@ export const fetchCommentsForArticle = (id) => {
 
 export const changeVote = (vote, id, route) => {
     const url = `${API_URL}/${route}/${id}?vote=${vote}`
-    console.log('url', url)
     return fetch(url, {
         method: 'PUT'
     })
