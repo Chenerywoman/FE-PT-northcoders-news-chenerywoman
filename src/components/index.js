@@ -1,11 +1,12 @@
 import Article from './Article';
 import ArticleList from './ArticleList';
+import ArticleBox from './ArticleBox';
 import Comment from './Comment';
 import CommentsList from './CommentsList';
-import InputBox from './InputBox';
+import CommentBox from './CommentBox';
 import Navbar from './Navbar';
 import TopicChooser from './TopicChooser';
 import User from './User';
 import Votes from './Votes';
 
-export {Article, ArticleList, Comment, CommentsList, InputBox, Navbar, TopicChooser, User, Votes}
+export {Article, ArticleBox, ArticleList, Comment, CommentBox, CommentsList, Navbar, TopicChooser, User, Votes}
