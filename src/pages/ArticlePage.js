@@ -82,7 +82,7 @@ class ArticlePage extends Component {
             }
             <InputBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
-                <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} />
+            <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username}/>
             }
         </div>
         )
