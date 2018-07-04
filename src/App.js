@@ -5,7 +5,7 @@ import {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage} from './page
 
 class App extends Component {
 
-    state = {}
+    state = {username: 'tickle122'}
 
     render() {
         return (
@@ -14,9 +14,9 @@ class App extends Component {
                 <h1>Northcoders News</h1>
                     <Switch>
                         <Route exact path='/' render={props => (< HomePage />)} />
-                        <Route exact path='/articles' render={props => (<MainPage {...props} /> )} /> 
-                        <Route path='/articles/:topic' render={props => <ArticlesPage {...props} />} />
-                        <Route path='/articles/:id' render={props => <ArticlePage {...props}/>} />
+                        <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
+                        <Route path='/articles/topic/:topic' render={props => <ArticlesPage username={this.state.username} {...props} />} />
+                        <Route path='/articles/:id' render={props => <ArticlePage username={this.state.username}{...props}/>} />
                         <Route component={NoMatchPage} />
                     </Switch>
                 </React.Fragment>
