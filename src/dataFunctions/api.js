@@ -66,11 +66,10 @@ export const changeVote = (vote, id, route) => {
             if (res.status === 400 || res.status === 404) throw new Error(res.statusText)
             else return res.json()
         })
-        .then(res => console.log(res))
+        .then(res => res)
 }
 
-// n.b. try to reuse for posting article refactor keys inside body (add title, body instead of comment) - see BE
-export const postText = (created_by, comment, route, id, endpoint) => {
+export const postCommentText= (created_by, comment, route, id, endpoint) => {
     const url = `${API_URL}/${route}/${id}/${endpoint}`
     const body = { created_by, comment }
     return fetch(url, {
@@ -79,6 +78,23 @@ export const postText = (created_by, comment, route, id, endpoint) => {
         headers: { 'Content-Type': 'application/json' }
     })
         .then(res => res.json())       
+}
+
+export const postArticleText = (created_by, title, article, topicName) => {
+    console.log('created_by', created_by, 'title', title, 'article', article, 'topicName', topicName)
+    const urlTopics = `${API_URL}/topics`;
+    const body = { created_by, title, body: article}
+    return fetch(urlTopics)
+    .then(res => res.json())
+    .then (res =>  {
+    const chosenTopic = res.topics.find(topic => topic.slug === topicName.toLowerCase())
+    const url = `${API_URL}/topics/${chosenTopic._id}/articles`;
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' }
+    })})
+        .then(res => res.json()) 
 }
 
 export const deleteText = (id, username) => {
