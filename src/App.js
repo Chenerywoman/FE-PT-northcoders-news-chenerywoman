@@ -15,7 +15,9 @@ class App extends Component {
     
         if (localStorage.username) {
             console.log('localStorage', localStorage.username)
-        this.setState({username: localStorage.username})
+
+        const newUserName = localStorage.getItem('username')       
+        this.setState({username: newUserName})
         }
     }
 
