@@ -41,11 +41,6 @@ class MainPage extends Component {
 
   componentDidMount() {
     this.fetchArticles()
-    .then(articles => {
-      if (this.state.index > this.state.articles.length -1 || this.state.index < 0 || !/^\d+$/.test(this.state.index) ){
-      this.props.history.push('/404')
-    }
-  })
   }
 
 
