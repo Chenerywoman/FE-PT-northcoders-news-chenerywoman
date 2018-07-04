@@ -71,7 +71,7 @@ class ArticlePage extends Component {
             {loading ? <p>Loading...</p> :
                 <Article key={article._id} article={article} />
             }
-            <InputBox postComment={this.postComment} />
+            <InputBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
                 <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} />
             }
