@@ -14,8 +14,6 @@ class App extends Component {
     componentDidMount(){
     
         if (localStorage.username) {
-            console.log('localStorage', localStorage.username)
-
         const newUserName = localStorage.getItem('username')       
         this.setState({username: newUserName})
         }
