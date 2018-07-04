@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage} from './pages';
+import {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage, PostArticlePage} from './pages';
 
 class App extends Component {
 
@@ -16,6 +16,7 @@ class App extends Component {
                         <Route exact path='/' render={props => (< HomePage />)} />
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
                         <Route path='/articles/topic/:topic' render={props => <ArticlesPage username={this.state.username} {...props} />} />
+                        <Route path='/articles/postarticle' render={props => <PostArticlePage username={this.state.username} {...props} />} />
                         <Route path='/articles/:id' render={props => <ArticlePage username={this.state.username}{...props}/>} />
                         <Route component={NoMatchPage} />
                     </Switch>
