@@ -39,7 +39,7 @@ render(){
    <label>
      Select your username:
      <select value={this.state.value} onChange={this.handleChange}>
-     {this.state.users.map(user => <option value={user.username}> {user.username}</option>)}
+     {this.state.users.map(user => <option key={user._id} value={user.username}> {user.username}</option>)}
      </select>
    </label>
    <input type="submit" value="Submit" />
