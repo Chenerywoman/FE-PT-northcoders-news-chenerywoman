@@ -68,15 +68,15 @@ class ArticlePage extends Component {
 
     render() {
         const { loading, article } = this.state
+        console.log(article, 'article')
         return (<div>
             {loading ? <p>Loading...</p> :
             <React.Fragment>
-            <Link to='/'><p>Return to Homepage</p></Link>
+            <Link to='/'> <p>Return to Homepage</p></Link>
             <Link to='/articles'><p>Return to All Articles</p></Link>
-            {/* { article.belongs_to === 'football' ? <Link to='articles/topic/football'><p>Return to football</p></Link> 
-            : article.belongs_to === 'cooking' ? <Link to='articles/topic/cooking'><p>Return to cooking</p></Link> 
-            : <Link to='articles/topic/coding'><p>Return to coding</p></Link> 
-            } */}
+            {article.belongs_to.title.toLowerCase() === 'coding' ? <Link to='/articles/topic/coding' > <p> return to all coding articles </p> </Link> : <div></div> }
+           {article.belongs_to.title.toLowerCase() === 'football' ? <Link to='/articles/topic/football' > <p>  return to all football articles </p></Link>  : <div></div> }
+           {article.belongs_to.title.toLowerCase() === 'cooking' ? <Link to='/articles/topic/cooking' > return to all cooking articles </Link> : <div></div> }
                 <Article key={article._id} article={article} />
                 </React.Fragment>
             }
