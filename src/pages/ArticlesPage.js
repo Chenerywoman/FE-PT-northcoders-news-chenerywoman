@@ -67,11 +67,12 @@ class ArticlesPage extends Component {
                     :
                     <div>
                         <Link to='/articles'><p>Return to all articles</p></Link>
+                        <Link to='/articles/postarticle'><p>Return to all articles</p></Link>
                         <Link to='/'><p>Return to HomePage</p></Link>
                         <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> Down one page...</button>
                         <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > Up one page...</button>
                         <p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
-                        <ArticleList topic={this.props.match.params.topic} articles={this.state.articles[this.state.index]} />
+                        <ArticleList topic={this.props.match.params.topic} articles={this.state.articles[this.state.index]} username={this.props.username}/>
                     </div>
                 }
             </div>
@@ -82,6 +83,7 @@ class ArticlesPage extends Component {
 ArticlesPage.propTypes = {
     match: PropTypes.shape({
         params: PropTypes.shape({
+
             topic: PropTypes.string.isRequired
         })
     }),
