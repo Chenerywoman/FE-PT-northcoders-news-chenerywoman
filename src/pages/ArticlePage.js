@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Article from '../components/Article';
@@ -69,7 +70,15 @@ class ArticlePage extends Component {
         const { loading, article } = this.state
         return (<div>
             {loading ? <p>Loading...</p> :
+            <React.Fragment>
+            <Link to='/'><p>Return to Homepage</p></Link>
+            <Link to='/articles'><p>Return to All Articles</p></Link>
+            {/* { article.belongs_to === 'football' ? <Link to='articles/topic/football'><p>Return to football</p></Link> 
+            : article.belongs_to === 'cooking' ? <Link to='articles/topic/cooking'><p>Return to cooking</p></Link> 
+            : <Link to='articles/topic/coding'><p>Return to coding</p></Link> 
+            } */}
                 <Article key={article._id} article={article} />
+                </React.Fragment>
             }
             <InputBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
