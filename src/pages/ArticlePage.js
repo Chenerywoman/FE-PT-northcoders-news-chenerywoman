@@ -74,9 +74,9 @@ class ArticlePage extends Component {
             <React.Fragment>
             <Link to='/'> <p>Return to Homepage</p></Link>
             <Link to='/articles'><p>Return to All Articles</p></Link>
-            {article.belongs_to.title.toLowerCase() === 'coding' ? <Link to='/articles/topic/coding' > <p> return to all coding articles </p> </Link> : <div></div> }
-           {article.belongs_to.title.toLowerCase() === 'football' ? <Link to='/articles/topic/football' > <p>  return to all football articles </p></Link>  : <div></div> }
-           {article.belongs_to.title.toLowerCase() === 'cooking' ? <Link to='/articles/topic/cooking' > return to all cooking articles </Link> : <div></div> }
+            {article.belongs_to.title.toLowerCase() === 'coding' ? <Link to='/articles/topic/coding' > <p> return to all coding articles </p> </Link> : 
+           article.belongs_to.title.toLowerCase() === 'football' ? <Link to='/articles/topic/football' > <p>  return to all football articles </p></Link>  : 
+            <Link to='/articles/topic/cooking' > return to all cooking articles </Link> }
                 <Article key={article._id} article={article} />
                 </React.Fragment>
             }
