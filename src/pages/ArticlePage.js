@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Article from '../components/Article';
-import InputBox from '../components/InputBox';
+import CommentBox from '../components/CommentBox';
 import CommentsList from '../components/CommentsList';
 
-import { fetchArticleById, fetchCommentsForArticle, postText, deleteText } from '../dataFunctions/api'
+import { fetchArticleById, fetchCommentsForArticle, postCommentText, deleteText } from '../dataFunctions/api'
 
 class ArticlePage extends Component {
 
@@ -34,7 +34,7 @@ class ArticlePage extends Component {
     }
 
     postComment = (created_by, comment) => {
-        return postText(created_by, comment, 'articles', this.props.match.params.id, 'comments')
+        return postCommentText(created_by, comment, 'articles', this.props.match.params.id, 'comments')
             .then(res => {
                 if (res.error) {
                     return res.error
@@ -68,7 +68,6 @@ class ArticlePage extends Component {
 
     render() {
         const { loading, article } = this.state
-        console.log(article, 'article')
         return (<div>
             {loading ? <p>Loading...</p> :
             <React.Fragment>
@@ -80,7 +79,7 @@ class ArticlePage extends Component {
                 <Article key={article._id} article={article} />
                 </React.Fragment>
             }
-            <InputBox postComment={this.postComment} username={this.props.username} />
+            <CommentBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
             <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username}/>
             }
