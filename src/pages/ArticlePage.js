@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Article from '../components/Article';
-import CommentBox from '../components/CommentBox';
-import CommentsList from '../components/CommentsList';
+import {Article, CommentBox, CommentsList, Navbar} from '../components';
+
 
 import { fetchArticleById, fetchCommentsForArticle, postCommentText, deleteText } from '../dataFunctions/api'
 
@@ -71,6 +70,7 @@ class ArticlePage extends Component {
         return (<div>
             {loading ? <p>Loading...</p> :
             <React.Fragment>
+            <Navbar username={this.props.username} />
             <Link to='/'> <p>Return to Homepage</p></Link>
             <Link to='/articles'><p>Return to All Articles</p></Link>
             {article.belongs_to.title.toLowerCase() === 'coding' ? <Link to='/articles/topic/coding' > <p> return to all coding articles </p> </Link> : 
