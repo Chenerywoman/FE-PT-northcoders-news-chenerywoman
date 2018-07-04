@@ -113,3 +113,16 @@ export const deleteText = (id, username) => {
         else return res.json()
     })
 }
+
+export const getAllUsers = () => {
+    const url = `${API_URL}/users`
+    return fetch(url)
+        .then(res => {
+            if (res.status === 404) throw new Error(res.statusText)
+            else return res.json()
+        })
+        .then(({ users }) => {
+          return users
+        })
+
+}
