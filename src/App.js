@@ -26,7 +26,6 @@ class App extends Component {
     }
     
     render() {
-        console.log('username', this.state.username)
         return (
             <BrowserRouter>
                 <React.Fragment>
