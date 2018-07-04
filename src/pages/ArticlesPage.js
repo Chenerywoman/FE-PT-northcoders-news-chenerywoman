@@ -19,7 +19,6 @@ class ArticlesPage extends Component {
 
         return fetchTopicArticles(topic)
             .then(articles => {
-                console.log(articles)
                 this.setState({ articles, loading: false })
             })
             .catch(error => {
@@ -62,7 +61,7 @@ class ArticlesPage extends Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar username={this.props.username}/>
                 {this.state.loading ? <div>Loading...</div>
                     :
                     <div>
