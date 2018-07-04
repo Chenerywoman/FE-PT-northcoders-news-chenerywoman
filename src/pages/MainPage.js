@@ -48,7 +48,7 @@ class MainPage extends Component {
     return (
       <div>
 
-        <Navbar />
+        <Navbar username={this.props.username} />
         {this.state.loading ? <div>Loading...</div>
           :
           <div>
