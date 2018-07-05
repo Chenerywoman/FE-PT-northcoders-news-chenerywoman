@@ -13,6 +13,7 @@ class PostArticlePage extends Component {
             if (res.error) {
                 return res.error
             } else { 
+                console.log('res', res)
                 return res }}
         )   
 }
