@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllUsers } from '../dataFunctions/api'
+import { getAllUsers } from '../dataFunctions/api';
+import PropTypes from 'prop-types';
 
-class Homepage extends Component {
+class HomePage extends Component {
 
     state = {
 
@@ -61,4 +62,9 @@ class Homepage extends Component {
 
 }
 
-export default Homepage
+HomePage.propTypes = {
+    username: PropTypes.string.isRequired,
+
+}
+
+export default HomePage
