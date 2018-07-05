@@ -21,7 +21,9 @@ const Comment = ({ comment, deleteComment, username }) => {
 
 Comment.propTypes = {
 
-    comment: PropTypes.object.isRequired
+    comment: PropTypes.object.isRequired,
+    deleteComment: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired
 }
 
 export default Comment;
