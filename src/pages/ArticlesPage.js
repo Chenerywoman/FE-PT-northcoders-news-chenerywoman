@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { ArticleList, Navbar } from '../components'
-
-
 import { fetchTopicArticles } from '../dataFunctions/api';
 
 class ArticlesPage extends Component {
@@ -83,11 +81,17 @@ class ArticlesPage extends Component {
 ArticlesPage.propTypes = {
     match: PropTypes.shape({
         params: PropTypes.shape({
-
             topic: PropTypes.string.isRequired
         })
     }),
-    history: PropTypes.object.isRequired
+
+    history: PropTypes.object.isRequired,
+
+    location: PropTypes.shape({
+        search: PropTypes.string.isRequired
+    }),
+
+    username: PropTypes.string.isRequired
 }
 
 export default ArticlesPage;
