@@ -19,7 +19,6 @@ handleArticleChange = event => {
 }
 
 handleTopicChange = event => {
-    console.log('event.target.value', event.target.value)
   this.setState({topic:event.target.value})
 }
 
@@ -28,7 +27,6 @@ handleClick = event => {
     this.props.postArticle(this.state.title, this.state.article, this.state.topic)
     .then(res => {
         if (res.new_article) {
-            console.log('res in handleclick', res)
             this.setState({topic: '', title:'', article: '', err: ''})
         }
         else {this.setState({topic: '', title:'', article: '', err: ''})}
