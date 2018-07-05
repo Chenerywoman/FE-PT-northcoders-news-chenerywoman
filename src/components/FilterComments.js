@@ -24,6 +24,7 @@ const FilterComments = ({ filterComments, filtered }) => {
 
 FilterComments.propTypes = {
     filterComments: PropTypes.func.isRequired,
+    filtered: PropTypes.string.isRequired
 }
 
 export default FilterComments;
