@@ -51,7 +51,7 @@ export const fetchCommentsForArticle = (id) => {
     const url = `${API_URL}/articles/${id}/comments`
     return fetch(url)
         .then(res => {
-            if (res.status === 404) throw new Error(res.statusText)
+            if (res.status === 404) throw {status: res.status}
             else return res.json()
         })
         .then(({ comments }) => comments)

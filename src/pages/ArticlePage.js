@@ -27,13 +27,18 @@ class ArticlePage extends Component {
     fetchComments = (id) => {
         return fetchCommentsForArticle(id)
             .then(comments => {
-                this.setState({ comments, loading: false })
+                this.setState({ comments, loading: false });
+                return comments;
             })
-            .catch(error => this.props.history.push('/404'))
+            .catch(error => {
+                if (error.status === 404) {this.setState({loading: false })}
+                else {this.props.history.push('/404')}
+            }
+            )
+            
     }
 
-    filterComments = (filter) => {
-    
+    filterComments = (filter) => {   
     if (filter === 'recent') {
         const mostRecentComments = mostRecent(this.state.comments)
         this.setState({comments: mostRecentComments, filtered: 'recent'})
@@ -44,7 +49,6 @@ class ArticlePage extends Component {
    this.setState({comments: mostVotedComments, filtered: 'voted'})
     }
 }
-
 
     postComment = (created_by, comment) => {
         return postCommentText(created_by, comment, 'articles', this.props.match.params.id, 'comments')
@@ -74,7 +78,10 @@ class ArticlePage extends Component {
         const articleId = this.props.match.params.id;
         return this.fetchArticle(articleId)
             .then(() => this.fetchComments(articleId))
-            .then(comments => this.filterComments('recent'))
+            .then(res => {
+                console.log('res in componentDidMount', res)
+                if (res) return this.filterComments('recent')
+            })
         }
     
     render() {
