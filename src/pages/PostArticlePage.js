@@ -8,7 +8,7 @@ import {postArticleText} from '../dataFunctions/api';
 class PostArticlePage extends Component {
 
     state = {
-        newArticle: false,
+        new_article: {},
     }
 
     postArticle = (title, article, topic) => {
@@ -16,7 +16,9 @@ class PostArticlePage extends Component {
         .then(res => { 
             if (res.error) {
                 return res.error
-            } else { this.setState({newArticle: true}) }}
+            } else { 
+                console.log('res in postarticles page', res)
+                this.setState({new_article: res.new_article}) }}
         )   
 }
 render() {
@@ -25,6 +27,7 @@ render() {
     <Navbar username={this.props.username}/>
     <ArticleBox postArticle={this.postArticle}/>
     {this.state.newArticle ?  <div>Your article has been posted!</div> : <div></div>}
+    <Link to={`/articles/${this.state.new_article._id}`} >  <p>{this.state.new_article.title}</p> </Link>
     <Link to='/articles'> <p> Go to articles </p></Link> 
     </React.Fragment>
     )
