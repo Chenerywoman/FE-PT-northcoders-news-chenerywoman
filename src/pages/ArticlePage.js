@@ -11,6 +11,7 @@ class ArticlePage extends Component {
     state = {
         article: {},
         comments: [],
+        filtered: '',
         loading: true
     }
 
@@ -32,16 +33,15 @@ class ArticlePage extends Component {
     }
 
     filterComments = (filter) => {
-        console.log('filter', filter)
     
     if (filter === 'recent') {
         const mostRecentComments = mostRecent(this.state.comments)
-        this.setState({comments: mostRecentComments})
+        this.setState({comments: mostRecentComments, filtered: 'recent'})
     }
 
     else if (filter === 'voted') {
    const mostVotedComments = mostVoted(this.state.comments)
-   this.setState({comments: mostVotedComments})
+   this.setState({comments: mostVotedComments, filtered: 'voted'})
     }
 }
 
@@ -64,21 +64,19 @@ class ArticlePage extends Component {
                 const indexToDelete = this.state.comments.findIndex(comment => comment._id === deleted_comment._id)
                 const amendedComments = [...this.state.comments]
                 amendedComments.splice(indexToDelete, 1)
-
-                this.setState({
-                    comments: amendedComments
-                })
+                this.setState({comments: amendedComments})
             })
             .catch(err => console.log(err))
     }
 
     componentDidMount() {
+ 
         const articleId = this.props.match.params.id;
         return this.fetchArticle(articleId)
-            .then(() => this.fetchComments(articleId));
-    }
-
-
+            .then(() => this.fetchComments(articleId))
+            .then(comments => this.filterComments('recent'))
+        }
+    
     render() {
         const { loading, article } = this.state
         return (<div>
@@ -96,7 +94,7 @@ class ArticlePage extends Component {
             <CommentBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
             <React.Fragment>
-            <FilterComments filterComments={this.filterComments} />
+            <FilterComments filterComments={this.filterComments} filtered={this.state.filtered} />
             <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username}/>
             </React.Fragment>
         }
