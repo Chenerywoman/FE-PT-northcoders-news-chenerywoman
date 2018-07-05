@@ -16,10 +16,7 @@ class PostArticlePage extends Component {
         .then(res => { 
             if (res.error) {
                 return res.error
-            } else { 
-                console.log('res', res)
-                this.setState({newArticle: true})
-                return res }}
+            } else { this.setState({newArticle: true}) }}
         )   
 }
 render() {
