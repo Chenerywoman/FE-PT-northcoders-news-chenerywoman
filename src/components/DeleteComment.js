@@ -15,9 +15,9 @@ const handleClick = (event) => {
 }
 
 DeleteComment.propTypes = {
-        deleteComment: PropTypes.deleteComment.isRequired,
-        id: PropTypes.username.isRequired,
-        username: PropTypes.username.isRequired
+        deleteComment: PropTypes.deleteComment,
+        id: PropTypes.username,
+        username: PropTypes.username
     }
 
 export default DeleteComment;

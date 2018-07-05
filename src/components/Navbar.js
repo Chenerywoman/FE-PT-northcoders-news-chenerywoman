@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import TopicChooser from './TopicChooser';
 
 const Navbar = ({username, topic}) => (<nav> 
@@ -8,5 +10,12 @@ const Navbar = ({username, topic}) => (<nav>
 
     <TopicChooser topic={topic}/>
 </nav>)
+
+Navbar.PropTypes = {
+
+    username: PropTypes.string.isRequired,
+    topic: PropTypes.string.isRequired
+
+}
 
 export default Navbar;
