@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import ArticleBox from '../components/ArticleBox';
+import {ArticleBox, Navbar} from '../components';
 import {postArticleText} from '../dataFunctions/api';
 
 
@@ -18,7 +18,10 @@ class PostArticlePage extends Component {
 }
 render() {
     return (
+    <React.Fragment>
+    <Navbar username={this.props.username}/>
     <ArticleBox postArticle={this.postArticle}/>
+    </React.Fragment>
     )
 
 }
