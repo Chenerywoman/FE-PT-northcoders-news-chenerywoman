@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
- const FilterComments = ({filterComments}) => {
+const FilterComments = ({ filterComments, filtered }) => {
     console.log('in filterComments')
 
-const handleVotedClick = (event) => {
-    return filterComments('voted')
-}
+    const handleVotedClick = (event) => {
+        return filterComments('voted')
+    }
 
-const handleRecentClick = (event) => {
-    return filterComments('recent')
-}
-    return(
+    const handleRecentClick = (event) => {
+        return filterComments('recent')
+    }
+    return (
         <React.Fragment>
-        <button onClick={handleRecentClick}>filter by most recent</button>
-        <button onClick={handleVotedClick}>filter by most voted</button>
+            {
+                filtered === 'voted' ? <button onClick={handleRecentClick}>filter by most recent</button>
+                    : <button onClick={handleVotedClick}>filter by most voted</button>
+            }
         </React.Fragment>
     )
 
