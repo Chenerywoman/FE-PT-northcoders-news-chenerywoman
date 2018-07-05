@@ -31,7 +31,7 @@ class App extends Component {
                 <React.Fragment>
                 <h1>Northcoders News</h1>
                     <Switch>
-                        <Route exact path='/' render={props => (< HomePage logUser={this.logUser}/>)} />
+                        <Route exact path='/' render={props => (< HomePage logUser={this.logUser} username={this.state.username}/> )} />
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
                         <Route path='/articles/topic/:topic' render={props => <ArticlesPage username={this.state.username} {...props} />} />
                         <Route path='/articles/postarticle' render={props => <PostArticlePage username={this.state.username} {...props} />} />
