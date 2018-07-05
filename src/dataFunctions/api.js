@@ -81,7 +81,6 @@ export const postCommentText= (created_by, comment, route, id, endpoint) => {
 }
 
 export const postArticleText = (created_by, title, article, topicName) => {
-    console.log('created_by', created_by, 'title', title, 'article', article, 'topicName', topicName)
     const urlTopics = `${API_URL}/topics`;
     const body = { created_by, title, body: article}
     return fetch(urlTopics)
