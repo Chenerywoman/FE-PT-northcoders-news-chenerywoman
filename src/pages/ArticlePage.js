@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {Article, CommentBox, CommentsList, Navbar} from '../components';
-
-
+import {Article, CommentBox, CommentsList, FilterComments, Navbar} from '../components';
 import { fetchArticleById, fetchCommentsForArticle, postCommentText, deleteText } from '../dataFunctions/api'
+import {mostRecent, mostVoted} from '../dataFunctions/helpers'
 
 class ArticlePage extends Component {
 
@@ -31,6 +30,21 @@ class ArticlePage extends Component {
             })
             .catch(error => this.props.history.push('/404'))
     }
+
+    filterComments = (filter) => {
+        console.log('filter', filter)
+    
+    if (filter === 'recent') {
+        const mostRecentComments = mostRecent(this.state.comments)
+        this.setState({comments: mostRecentComments})
+    }
+
+    else if (filter === 'voted') {
+   const mostVotedComments = mostVoted(this.state.comments)
+   this.setState({comments: mostVotedComments})
+    }
+}
+
 
     postComment = (created_by, comment) => {
         return postCommentText(created_by, comment, 'articles', this.props.match.params.id, 'comments')
@@ -81,8 +95,11 @@ class ArticlePage extends Component {
             }
             <CommentBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
+            <React.Fragment>
+            <FilterComments filterComments={this.filterComments} />
             <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username}/>
-            }
+            </React.Fragment>
+        }
         </div>
         )
 
