@@ -66,7 +66,10 @@ class MainPage extends Component {
 }
 
 MainPage.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string
+  })
 }
 
 export default MainPage;
