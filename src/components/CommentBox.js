@@ -39,7 +39,8 @@ return (<form onSubmit={this.handleClick}>
 }
 
 CommentBox.propTypes = {
-    postComment: PropTypes.func.isRequired
+    postComment: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired
 }
 
 export default CommentBox;
