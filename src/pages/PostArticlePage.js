@@ -8,7 +8,7 @@ import {postArticleText} from '../dataFunctions/api';
 class PostArticlePage extends Component {
 
     state = {
-        newArticle: false
+        newArticle: false,
     }
 
     postArticle = (title, article, topic) => {
@@ -27,7 +27,8 @@ render() {
     <React.Fragment>
     <Navbar username={this.props.username}/>
     <ArticleBox postArticle={this.postArticle}/>
-    {this.state.newArticle ? <Link to='/articles'> <p> See your posted article </p></Link> : <div></div>}
+    {this.state.newArticle ?  <div>Your article has been posted!</div> : <div></div>}
+    <Link to='/articles'> <p> Go to articles </p></Link> 
     </React.Fragment>
     )
 
