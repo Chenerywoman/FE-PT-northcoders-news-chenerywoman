@@ -95,14 +95,19 @@ class ArticlePage extends Component {
            article.belongs_to.title.toLowerCase() === 'football' ? <Link to='/articles/topic/football' > <p>  return to all football articles </p></Link>  : 
             <Link to='/articles/topic/cooking' > return to all cooking articles </Link> }
                 <Article key={article._id} article={article} />
-                </React.Fragment>
+            </React.Fragment>
             }
             <CommentBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
             <React.Fragment>
-            <FilterComments filterComments={this.filterComments} filtered={this.state.filtered} />
-            <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username}/>
-            </React.Fragment>
+           {this.state.comments.length > 0 ? 
+           <div>
+            <FilterComments filterComments={this.filterComments} filtered={this.state.filtered} /> 
+            <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username} />
+            </div>
+            : <div> </div>
+        } 
+        </React.Fragment>
         }
         </div>
         )
