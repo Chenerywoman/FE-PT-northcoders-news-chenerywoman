@@ -79,7 +79,6 @@ class ArticlePage extends Component {
         return this.fetchArticle(articleId)
             .then(() => this.fetchComments(articleId))
             .then(res => {
-                console.log('res in componentDidMount', res)
                 if (res) return this.filterComments('recent')
             })
         }
