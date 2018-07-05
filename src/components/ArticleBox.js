@@ -44,7 +44,7 @@ return (<form onSubmit={this.handleClick}>
 <h5>Add an article</h5>
 {this.state.err ? <div> {this.state.err} </div> : <div></div> }
  <label>
-          Pick your favorite flavor:
+          Choose a topic for your article:
           <select value={this.state.topic} onChange={this.handleTopicChange}>
             <option value="football">football</option>
             <option value="coding">coding</option>
