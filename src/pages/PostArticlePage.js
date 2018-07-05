@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 import {ArticleBox, Navbar} from '../components';
 import {postArticleText} from '../dataFunctions/api';
@@ -6,14 +7,18 @@ import {postArticleText} from '../dataFunctions/api';
 
 class PostArticlePage extends Component {
 
+    state = {
+        newArticle: false
+    }
+
     postArticle = (title, article, topic) => {
         return postArticleText(this.props.username, title, article, topic) 
         .then(res => { 
-            console.log('res in postArticle', res)
             if (res.error) {
                 return res.error
             } else { 
                 console.log('res', res)
+                this.setState({newArticle: true})
                 return res }}
         )   
 }
@@ -22,6 +27,7 @@ render() {
     <React.Fragment>
     <Navbar username={this.props.username}/>
     <ArticleBox postArticle={this.postArticle}/>
+    {this.state.newArticle ? <Link to='/articles'> <p> See your posted article </p></Link> : <div></div>}
     </React.Fragment>
     )
 
