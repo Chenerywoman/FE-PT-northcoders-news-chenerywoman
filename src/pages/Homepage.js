@@ -35,6 +35,7 @@ render(){
    return ( 
     <div>
    <Link to={`/articles`} > <p>articles</p> </Link> 
+   <Link to={`/articles/postarticle`} > <p>post an article</p> </Link> 
    <form onSubmit={this.handleSubmit}>
    <label>
      Select your username:
