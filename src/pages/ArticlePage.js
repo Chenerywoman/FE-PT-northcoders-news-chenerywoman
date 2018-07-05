@@ -122,7 +122,8 @@ ArticlePage.propTypes = {
         })
     }),
 
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired, 
+    username: PropTypes.string.isRequired
 }
 
 export default ArticlePage;
