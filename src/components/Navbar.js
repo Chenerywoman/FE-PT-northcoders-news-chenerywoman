@@ -30,7 +30,7 @@ class Navbar extends Component {
             <li id='football'><Link className={this.props.page === 'football' ? 'link-active' : 'link'}  to='/articles/topic/football' >Football</Link></li>
             <li id='cooking'><Link className={this.props.page === 'cooking' ? 'link-active' : 'link'}  to='/articles/topic/cooking' >Cooking</Link></li>
             <li id='post'><Link className={this.props.page === 'postarticle' ? 'link-active' : 'link'} to='articles/postarticle'>Post</Link></li>
-            <li id='loginHere' className='link'> {`${this.props.username}`}</li>    
+            <li id='login' className='link'> {`${this.props.username}`}</li>    
         </ul>
     </nav>
     )
