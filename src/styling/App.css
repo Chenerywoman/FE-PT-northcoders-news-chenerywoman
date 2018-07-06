@@ -1,7 +1,7 @@
 body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding-top: 75px;
     background-color: #F0F8FF;
 }
 html {
@@ -31,6 +31,10 @@ html {
     [class*="col-"] {
         width: 100%;
     }
+
+    body {
+        padding-top: 250px;
+    }
 }
 
 
@@ -48,5 +52,3 @@ html {
     clear: both;
     display: table;
 }
-
-
