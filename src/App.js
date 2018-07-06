@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './styling/App.css';
 
 import {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage, PostArticlePage} from './pages';
 
@@ -29,7 +30,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <React.Fragment>
-                <h1>Northcoders News</h1>
+                <h1 id='NCNewsAppHeader'>NorthCoders News</h1>
                     <Switch>
                         <Route exact path='/' render={props => (< HomePage logUser={this.logUser} username={this.state.username}/> )} />
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
