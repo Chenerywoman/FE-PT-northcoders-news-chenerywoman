@@ -8,12 +8,6 @@ html {
     height: 100%;
 }
 
-#NCNewsAppHeader {
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    color: #4B0082;
-}
-
 * {
 
     box-sizing: border-box;
@@ -43,9 +37,11 @@ html {
 [class*="col-"] {
     float: left;
     padding: 15px;
-    /* border: 1px solid red; */
 }
 
+/* .row {
+    border: 1px solid red;
+} */
 
 .row::after {
     content: "";
