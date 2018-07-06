@@ -60,13 +60,10 @@ class ArticlesPage extends Component {
     render() {
         return (
             <div>
-                <Navbar username={this.props.username} topic={this.props.match.params.topic}/>
+                <Navbar username={this.props.username} page={this.props.match.params.topic}/>
                 {this.state.loading ? <div>Loading...</div>
                     :
                     <div>
-                        <Link to='/articles'><p>Return to all articles</p></Link>
-                        <Link to='/articles/postarticle'><p>Return to all articles</p></Link>
-                        <Link to='/'><p>Return to HomePage</p></Link>
                         <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> Down one page...</button>
                         <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > Up one page...</button>
                         <p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
