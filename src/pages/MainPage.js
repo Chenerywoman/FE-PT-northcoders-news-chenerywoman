@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import '../styling/pages/MainPage.css'
 
@@ -49,18 +49,23 @@ class MainPage extends Component {
   render() {
     return (
       <div>
-
         <Navbar username={this.props.username} page='main'/>
         {this.state.loading ? <div>Loading...</div>
           :
-          <div>
-            <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> Down one page...</button>
-            <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > Up one page...</button>
-            <p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
-            <ArticleList topic='' articles={this.state.articles[this.state.index]} history={this.props.history}/>
+          <div className='page-container'>
+          <div className='paginator' >
+          <div className='paginator-container'>
+          <div className="paginator-1"><p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p></div>
+          <div className="paginator-2"><button className='paginator-button' onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> down </button></div>
+          <div className="paginator-3"><button className='paginator-button' onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > up</button></div>
+            </div>
+            </div>
+            <div className='article-list'>
+          <ArticleList topic='' articles={this.state.articles[this.state.index]} history={this.props.history}/>
+          </div>
           </div>
         }
-      </div>
+         </div>
     );
   }
 }
