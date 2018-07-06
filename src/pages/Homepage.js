@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllUsers } from '../dataFunctions/api';
 import PropTypes from 'prop-types';
+import '../styling/pages/HomePage.css'
 
 class HomePage extends Component {
 
@@ -14,10 +15,7 @@ class HomePage extends Component {
 
     getUsers = () => {
         return getAllUsers()
-            .then(users => {
-                this.setState({ users: users })
-            }
-            )
+            .then(users => this.setState({ users: users }))
     }
 
     componentDidMount() {
@@ -43,19 +41,34 @@ class HomePage extends Component {
         return (
             <div>
                 {
-                    this.state.userlogged ? <p> You are now logged in as: {this.props.username} </p> : <p>Please log in: </p>
+                    this.state.userlogged ? 
+                    <p id='login1'> You are logged in as: {this.props.username} </p> 
+                    // <img src="" alt="">
+                    : <div></div>
                 }
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Select your username:
-                        <select value={this.state.value} onChange={this.handleChange}>
+                <div class='row'>
+                <div class='col-12'>
+                <form onSubmit={this.handleSubmit} id='loginform'>
+                {this.state.userlogged ? <span id='login2'>change login name:</span> : <span id='login3'>Please log in:</span>}
+                        <select value={this.state.value} onChange={this.handleChange} id='login4' >
                             {this.state.users.map(user => <option key={user._id} value={user.username}> {user.username}</option>)}
                         </select>
-                    </label>
-                    <input type="submit" value="Submit" />
+                        <div class='row'>
+                        <div class='col-12'>
+                  <input id='login5' type="submit" value="login" />
+                  </div>
+                  </div>
                 </form>
-                <Link to={`/articles`} > <p>articles</p> </Link>
-                <Link to={`/articles/postarticle`} > <p>post an article</p> </Link>
+                </div>
+                </div>
+                <div class='row'>
+                <div class='col-6'>
+                <button id='button-articles'><Link id='articles-link' to={`/articles`} > <p>go to articles</p> </Link></button>
+                </div>
+                <div class='col-6'>
+               <button id='button-postarticle'> <Link id='postarticle-link'to={`/articles/postarticle`} > <p>post an article</p> </Link></button>
+                </div>
+                </div>
             </div>
         )
     }
