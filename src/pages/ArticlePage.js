@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {Article, CommentBox, CommentsList, FilterComments, Navbar} from '../components';
 import { fetchArticleById, fetchCommentsForArticle, postCommentText, deleteText } from '../dataFunctions/api'
-import {mostRecent, mostVoted} from '../dataFunctions/helpers'
+import {mostRecent, mostVoted, isEmpty} from '../dataFunctions/helpers'
 
 class ArticlePage extends Component {
 
@@ -85,20 +85,19 @@ class ArticlePage extends Component {
     
     render() {
         const { loading, article } = this.state
-        return (<div>
+        console.log('empty article', isEmpty(article))
+        return (
+        <div>
             {loading ? <p>Loading...</p> :
+            isEmpty(article) ? <Redirect to='/404' /> :
             <React.Fragment>
-            <Navbar username={this.props.username} />
-            <Link to='/'> <p>Return to Homepage</p></Link>
-            <Link to='/articles'><p>Return to All Articles</p></Link>
-            {article.belongs_to.title.toLowerCase() === 'coding' ? <Link to='/articles/topic/coding' > <p> return to all coding articles </p> </Link> : 
-           article.belongs_to.title.toLowerCase() === 'football' ? <Link to='/articles/topic/football' > <p>  return to all football articles </p></Link>  : 
-            <Link to='/articles/topic/cooking' > return to all cooking articles </Link> }
+            <Navbar username={this.props.username} topic={article.belongs_to.title.toLowerCase()} page='article'/>
                 <Article key={article._id} article={article} />
             </React.Fragment>
             }
             <CommentBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
+              isEmpty(article) ? <Redirect to='/404' /> :
             <React.Fragment>
            {this.state.comments.length > 0 ? 
            <div>
