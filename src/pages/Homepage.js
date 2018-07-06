@@ -10,7 +10,8 @@ class HomePage extends Component {
 
         users: [],
         value: '',
-        userlogged: false
+        userlogged: false, 
+        username: ''
     }
 
     getUsers = () => {
@@ -19,8 +20,12 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
+        console.log('this.props.username in mount', this.props.username)
         this.getUsers()
+        if (localStorage.username) {
+            this.setState({ userlogged: true })
     }
+}
 
     componentDidUpdate(prevProps) {
         if (this.props.username !== prevProps.username) {
@@ -40,33 +45,35 @@ class HomePage extends Component {
     render() {
         return (
             <div>
+              <h1>Welcome to NC News</h1>
                 {
                     this.state.userlogged ? 
                     <p id='login1'> You are logged in as: {this.props.username} </p> 
                     // <img src="" alt="">
                     : <div></div>
                 }
+                <form onSubmit={this.handleSubmit} id='loginform'>
                 <div class='row'>
                 <div class='col-12'>
-                <form onSubmit={this.handleSubmit} id='loginform'>
                 {this.state.userlogged ? <span id='login2'>change login name:</span> : <span id='login3'>Please log in:</span>}
                         <select value={this.state.value} onChange={this.handleChange} id='login4' >
                             {this.state.users.map(user => <option key={user._id} value={user.username}> {user.username}</option>)}
                         </select>
+                        </div>
+                        </div>
                         <div class='row'>
                         <div class='col-12'>
                   <input id='login5' type="submit" value="login" />
                   </div>
                   </div>
+                 
                 </form>
-                </div>
-                </div>
                 <div class='row'>
                 <div class='col-6'>
-                <button id='button-articles'><Link id='articles-link' to={`/articles`} > <p>go to articles</p> </Link></button>
+                <button id='button-articles'><Link id='articles-link' to={`/articles`} >go to articles</Link></button>
                 </div>
                 <div class='col-6'>
-               <button id='button-postarticle'> <Link id='postarticle-link'to={`/articles/postarticle`} > <p>post an article</p> </Link></button>
+               <button id='button-postarticle'> <Link id='postarticle-link'to={`/articles/postarticle`} >post an article</Link></button>
                 </div>
                 </div>
             </div>
