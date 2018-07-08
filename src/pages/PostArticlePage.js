@@ -25,11 +25,10 @@ class PostArticlePage extends Component {
 render() {
     return (
     <React.Fragment>
-    <Navbar username={this.props.username}/>
+    <Navbar username={this.props.username} page='postarticle'/>
     <ArticleBox postArticle={this.postArticle}/>
     {this.state.newArticle ?  <div>Your article has been posted!</div> : <div></div>}
     <Link to={`/articles/${this.state.new_article._id}`} >  <p>{this.state.new_article.title}</p> </Link>
-    <Link to='/articles'> <p> Go to articles </p></Link> 
     </React.Fragment>
     )
 

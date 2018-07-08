@@ -47,6 +47,7 @@ class MainPage extends Component {
 
 
   render() {
+    console.log('index', this.state.index)
     return (
       <div>
         <Navbar username={this.props.username} page='main'/>
