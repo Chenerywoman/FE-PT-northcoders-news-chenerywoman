@@ -20,8 +20,7 @@ import '../styling/components/Navbar.css'
 class Navbar extends Component {
 
     render(){
-        console.log('page', this.props.page)
-    return (<nav >
+    return (<nav>
         <ul id='list'>
             <li id='logo' className='link'> NCnewsLogo</li>
             <li id='home' ><Link className='link' to='/'>Home</Link></li>
