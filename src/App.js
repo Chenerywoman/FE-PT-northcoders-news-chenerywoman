@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styling/App.css';
 
-import {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage, PostArticlePage} from './pages';
+import {HomePage, MainPage, ArticlesPage, ArticlePage, PostArticlePage, NoMatchPage} from './pages';
 
 class App extends Component {
 
@@ -25,7 +25,7 @@ class App extends Component {
             return localStorage.setItem('username', this.state.username)
         }
     }
-    
+
     render() {
         return (
             <BrowserRouter>
@@ -33,9 +33,9 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/' render={props => (< HomePage logUser={this.logUser} username={this.state.username}/> )} />
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
-                        <Route path='/articles/topic/:topic' render={props => <ArticlesPage username={this.state.username} {...props} />} />
-                        <Route path='/articles/postarticle' render={props => <PostArticlePage username={this.state.username} {...props} />} />
-                        <Route path='/articles/:id' render={props => <ArticlePage username={this.state.username}{...props}/>} />
+                        <Route exact path='/articles/topic/:topic' render={props => <ArticlesPage username={this.state.username} {...props} />} />
+                        <Route exact path='/articles/:id' render={props => <ArticlePage username={this.state.username}{...props}/>} />
+                        <Route exact path='/articles/postarticle' render={props => <PostArticlePage username={this.state.username} {...props} />} />
                         <Route component={NoMatchPage} />
                     </Switch>
                 </React.Fragment>
