@@ -1,8 +1,8 @@
 import HomePage from './HomePage';
+import MainPage from './MainPage';
 import ArticlesPage from './ArticlesPage';
 import ArticlePage from './ArticlePage';
-import NoMatchPage from './NoMatchPage';
-import MainPage from './MainPage';
 import PostArticlePage from './PostArticlePage';
+import NoMatchPage from './NoMatchPage';
 
-export {HomePage, MainPage, ArticlesPage, ArticlePage, NoMatchPage, PostArticlePage};
+export {HomePage, MainPage, ArticlesPage, ArticlePage, PostArticlePage, NoMatchPage};
