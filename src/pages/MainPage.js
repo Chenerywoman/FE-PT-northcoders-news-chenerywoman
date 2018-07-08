@@ -26,11 +26,13 @@ class MainPage extends Component {
   };
 
   handleUpClick = (event) => {
+    console.log('this.props.history', this.props.history)
     this.props.history.push({
       pathname: '/articles',
       search: `?page=${this.state.page + 1}`
     })
     this.setState({ index: this.state.index + 1, page: this.state.page + 1 })
+    console.log('this.state.index', this.state.index)
   }
 
   handleDownClick = (event) => {
@@ -47,7 +49,6 @@ class MainPage extends Component {
 
 
   render() {
-    console.log('index', this.state.index)
     return (
       <div>
         <Navbar username={this.props.username} page='main'/>

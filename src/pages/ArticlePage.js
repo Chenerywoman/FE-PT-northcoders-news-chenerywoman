@@ -85,11 +85,11 @@ class ArticlePage extends Component {
     
     render() {
         const { loading, article } = this.state
-        console.log('empty article', isEmpty(article))
+     console.log('empty article', isEmpty(article))
         return (
         <div>
             {loading ? <p>Loading...</p> :
-            isEmpty(article) ? <Redirect to='/404' /> :
+          isEmpty(article) ? <Redirect to='/404' /> :
             <React.Fragment>
             <Navbar username={this.props.username} topic={article.belongs_to.title.toLowerCase()} page='article'/>
                 <Article key={article._id} article={article} />
@@ -97,7 +97,7 @@ class ArticlePage extends Component {
             }
             <CommentBox postComment={this.postComment} username={this.props.username} />
             {loading ? <p>Loading...</p> :
-              isEmpty(article) ? <Redirect to='/404' /> :
+           isEmpty(article) ? <Redirect to='/404' /> :
             <React.Fragment>
            {this.state.comments.length > 0 ? 
            <div>
