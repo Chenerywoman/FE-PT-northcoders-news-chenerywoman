@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 
 const ArticleList = ({ articles, topic }) => {
-    console.log('articles in articleList', articles)
     return (
         !articles ? <Redirect to='/404' /> :
             <div>
