@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 
 const ArticleList = ({ articles, topic }) => {
+    console.log('articles in articleList', articles)
     return (
         !articles ? <Redirect to='/404' /> :
             <div>
-                <h2>Articles {topic ? <span> about {topic} </span> : ''} </h2>
                 {articles.map(article =>
                     <Article key={article._id} article={article} />
                 )}
