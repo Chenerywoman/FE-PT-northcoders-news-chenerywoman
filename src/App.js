@@ -35,7 +35,7 @@ class App extends Component {
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
                         <Route exact path='/articles/topic/:topic' render={props => <ArticlesPage username={this.state.username} {...props} />} />
                         <Route exact path='/articles/:id' render={props => <ArticlePage username={this.state.username}{...props}/>} />
-                        <Route exact path='/articles/postarticle' render={props => <PostArticlePage username={this.state.username} {...props} />} />
+                        <Route exact path='/postarticle' render={props => <PostArticlePage username={this.state.username} {...props} />} />
                         <Route component={NoMatchPage} />
                     </Switch>
                 </React.Fragment>
