@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { ArticleList, Navbar } from '../components'
@@ -26,16 +25,18 @@ class ArticlesPage extends Component {
     }
 
     handleUpClick = (event) => {
+        console.log('this.props.history.location.pathname', this.props.history.location.pathname)
         this.props.history.push({
-            pathname: `/articles/${this.props.match.params.topic}`,
+            pathname: `/articles/topic/${this.props.match.params.topic}`,
             search: `?page=${this.state.page + 1}`
         })
         this.setState({ index: this.state.index + 1, page: this.state.page + 1 })
+        console.log('this.state.index', this.state.index)
     }
 
     handleDownClick = (event) => {
         this.props.history.push({
-            pathname: `/articles/${this.props.match.params.topic}`,
+            pathname: `/articles/topic/${this.props.match.params.topic}`,
             search: `?page=${this.state.page - 1}`
         })
         this.setState({ index: this.state.index - 1, page: this.state.page - 1 })
@@ -58,6 +59,8 @@ class ArticlesPage extends Component {
     }
 
     render() {
+        console.log('this.props.location.search in render', this.props.location.search)
+        console.log('this.state.index in render', this.state.index)
         return (
             <div>
                 <Navbar username={this.props.username} page={this.props.match.params.topic}/>
@@ -67,7 +70,7 @@ class ArticlesPage extends Component {
                         <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> Down one page...</button>
                         <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > Up one page...</button>
                         <p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
-                        <ArticleList topic={this.props.match.params.topic} articles={this.state.articles[this.state.index]} username={this.props.username}/>
+                        <ArticleList topic={this.props.match.params.topic} articles={this.state.articles[this.state.index]} />
                     </div>
                 }
             </div>
