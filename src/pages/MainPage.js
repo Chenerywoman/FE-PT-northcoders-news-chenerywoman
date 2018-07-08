@@ -11,8 +11,8 @@ class MainPage extends Component {
   state = {
     articles: [],
     loading: true,
-    page: this.props.location.search ? /^\d+$/.exec(this.props.location.search) : 1,
-    index: this.props.location.search ? /^\d+$/.exec(this.props.location.search) - 1 : 0,
+    page: this.props.location.search ? this.props.location.search.match(/\d+\b/) : 1,
+    index: this.props.location.search ? this.props.location.search.match(/\d+\b/) - 1 : 0,
   }
 
   fetchArticles = () => {
