@@ -25,13 +25,11 @@ class ArticlesPage extends Component {
     }
 
     handleUpClick = (event) => {
-        console.log('this.props.history.location.pathname', this.props.history.location.pathname)
         this.props.history.push({
             pathname: `/articles/topic/${this.props.match.params.topic}`,
             search: `?page=${this.state.page + 1}`
         })
         this.setState({ index: this.state.index + 1, page: this.state.page + 1 })
-        console.log('this.state.index', this.state.index)
     }
 
     handleDownClick = (event) => {
@@ -59,8 +57,6 @@ class ArticlesPage extends Component {
     }
 
     render() {
-        console.log('this.props.location.search in render', this.props.location.search)
-        console.log('this.state.index in render', this.state.index)
         return (
             <div>
                 <Navbar username={this.props.username} page={this.props.match.params.topic}/>
