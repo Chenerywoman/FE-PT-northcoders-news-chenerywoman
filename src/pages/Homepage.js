@@ -48,7 +48,7 @@ class HomePage extends Component {
               <h1>Welcome to NC News</h1>
                 {
                     this.state.userlogged ? 
-                    <p id='login1'> You are logged in as: {this.props.username} </p> 
+                    <p id='login1'> You are logged in as: <span id='username'> {this.props.username} </span></p> 
                     // <img src="" alt="">
                     : <div></div>
                 }
