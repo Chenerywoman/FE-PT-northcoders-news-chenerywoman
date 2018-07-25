@@ -18,14 +18,12 @@ class PostArticlePage extends Component {
             if (res.error) {
                 return res.error
             } else { 
-                console.log('res in postarticles page', res)
                 this.setState({new_article: res.new_article}) }}
         )   
 }
 render() {
     return (
     <React.Fragment>
-    <Navbar username={this.props.username} page='postarticle'/>
     <ArticleBox postArticle={this.postArticle}/>
     {this.state.newArticle ?  <div>Your article has been posted!</div> : <div></div>}
     <Link to={`/articles/${this.state.new_article._id}`} >  <p>{this.state.new_article.title}</p> </Link>
