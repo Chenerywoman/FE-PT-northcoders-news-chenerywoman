@@ -1,21 +1,22 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styling/components/Navbar.css'
 
 class Navbar extends Component {
 
     render(){
-    return (<nav>
+    return (
+    <nav>
         <ul id='list'>
             <li id='logo' className='link'> NCnewsLogo</li>
-            <li id='home' ><Link className='link' to='/'>Home</Link></li>
-            <li id='main'><Link className={this.props.page === 'main' ? 'link-active' : 'link'}  to='/articles'>All</Link></li>
-            <li id='coding'><Link className={this.props.page === 'coding' ? 'link-active' : 'link'}  to='/articles/topic/coding' >Coding</Link></li>
-            <li id='football'><Link className={this.props.page === 'football' ? 'link-active' : 'link'}  to='/articles/topic/football' >Football</Link></li>
-            <li id='cooking'><Link className={this.props.page === 'cooking' ? 'link-active' : 'link'}  to='/articles/topic/cooking' >Cooking</Link></li>
-            <li id='post'><Link className={this.props.page === 'postarticle' ? 'link-active' : 'link'} to='/postarticle'>Post</Link></li>
-            <li id='login' className='link'> {`${this.props.username}`}</li>    
+            <li id='home' ><NavLink activeClassName='link-active' className='link' exact to='/'>Home</NavLink></li>
+            <li id='main'><NavLink activeClassName='link-active' className='link' exact to='/articles'>All</NavLink></li>
+            <li id='coding'><NavLink activeClassName='link-active' className='link' to='/articles/topic/coding' >Coding</NavLink></li>
+            <li id='football'><NavLink activeClassName='link-active' className='link' to='/articles/topic/football' >Football</NavLink></li>
+            <li id='cooking'><NavLink activeClassName='link-active' className='link' to='/articles/topic/cooking' >Cooking</NavLink></li>
+            <li id='post'><NavLink activeClassName='link-active' className='link' to='/postarticle'>Post</NavLink></li>
+            <li id='login'> <NavLink activeClassName='link-active' className='link' to='/'>{`${this.props.username}`}</NavLink></li>    
         </ul>
     </nav>
     )
@@ -25,8 +26,6 @@ class Navbar extends Component {
 Navbar.propTypes = {
 
     username: PropTypes.string.isRequired,
-    page: PropTypes.string.isRequired
-
 }
 
 export default Navbar;
