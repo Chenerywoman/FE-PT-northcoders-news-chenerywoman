@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ArticleList} from '../components'
-import { fetchTopicArticles } from '../dataFunctions/api';
+import { ArticleList } from '../components'
+import { fetchAllArticles, fetchTopicArticles } from '../dataFunctions/api';
 
 class ArticlesPage extends Component {
 
@@ -12,6 +12,17 @@ class ArticlesPage extends Component {
         page: this.props.location.search ? this.props.location.search.match(/\d+\b/) : 1,
         index: this.props.location.search ? this.props.location.search.match(/\d+\b/) - 1 : 0,
     }
+
+    fetchArticles = () => {
+        return fetchAllArticles()
+            .then(articles => {
+                this.setState({ articles, loading: false })
+            })
+            .catch(error => {
+                console.log('error in fetchAllArticles', error)
+                this.props.history.push('/404');
+            });
+    };
 
     fetchArticlesByTopic = (topic) => {
 
@@ -25,34 +36,48 @@ class ArticlesPage extends Component {
     }
 
     handleUpClick = (event) => {
+
         this.props.history.push({
-            pathname: `/articles/topic/${this.props.match.params.topic}`,
+            pathname: this.props.match.params.topic ? `/articles/topic/${this.props.match.params.topic}` : '/articles',
             search: `?page=${this.state.page + 1}`
         })
         this.setState({ index: this.state.index + 1, page: this.state.page + 1 })
     }
 
+
     handleDownClick = (event) => {
         this.props.history.push({
-            pathname: `/articles/topic/${this.props.match.params.topic}`,
+            pathname: this.props.match.params.topic ? `/articles/topic/${this.props.match.params.topic}` : '/articles',
             search: `?page=${this.state.page - 1}`
         })
         this.setState({ index: this.state.index - 1, page: this.state.page - 1 })
     }
 
     componentDidMount() {
-        const topic = this.props.match.params.topic
-        this.fetchArticlesByTopic(topic)
+        if (this.props.match.params.topic) {
+            const topic = this.props.match.params.topic
+            this.fetchArticlesByTopic(topic)
+        }
+        else this.fetchArticles()
     }
 
     componentDidUpdate(prevProps) {
+        if (this.props.match.params.topic) {
+            const currTopic = this.props.match.params.topic;
+            const prevTopic = prevProps.match.params.topic;
 
-        const currTopic = this.props.match.params.topic
-        const prevTopic = prevProps.match.params.topic
+            if (currTopic !== prevTopic) {
+                this.setState({ loading: true })
+                this.fetchArticlesByTopic(currTopic)
+            }
+        } else {
+            const currPath = this.props.location.pathname;
+            const prevPath = prevProps.location.pathname;
 
-        if (currTopic !== prevTopic) {
-            this.setState({ loading: true })
-            this.fetchArticlesByTopic(currTopic)
+            if (currPath !== prevPath) {
+                this.setState({ loading: true })
+                this.fetchArticles()
+            }
         }
     }
 
@@ -62,10 +87,10 @@ class ArticlesPage extends Component {
                 {this.state.loading ? <div>Loading...</div>
                     :
                     <div>
-                        <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> Down one page...</button>
-                        <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > Up one page...</button>
                         <p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
-                        <ArticleList topic={this.props.match.params.topic} articles={this.state.articles[this.state.index]} />
+                        <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> down...</button>
+                        <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > up</button>
+                        <ArticleList topic={this.props.match.params.topic ? this.props.match.params.topic : ''} articles={this.state.articles[this.state.index]} history={this.props.history} />
                     </div>
                 }
             </div>
@@ -76,7 +101,7 @@ class ArticlesPage extends Component {
 ArticlesPage.propTypes = {
     match: PropTypes.shape({
         params: PropTypes.shape({
-            topic: PropTypes.string.isRequired
+            topic: PropTypes.string
         })
     }),
 
@@ -86,7 +111,6 @@ ArticlesPage.propTypes = {
         search: PropTypes.string.isRequired
     }),
 
-    username: PropTypes.string.isRequired
 }
 
 export default ArticlesPage;
