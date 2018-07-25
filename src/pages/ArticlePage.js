@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {Article, CommentBox, CommentsList, FilterComments, Navbar} from '../components';
+import {Article, CommentBox, CommentsList, FilterComments} from '../components';
 import { fetchArticleById, fetchCommentsForArticle, postCommentText, deleteText } from '../dataFunctions/api'
 import {mostRecent, mostVoted, isEmpty} from '../dataFunctions/helpers'
 
@@ -85,13 +85,11 @@ class ArticlePage extends Component {
     
     render() {
         const { loading, article } = this.state
-     console.log('empty article', isEmpty(article))
         return (
         <div>
             {loading ? <p>Loading...</p> :
           isEmpty(article) ? <Redirect to='/404' /> :
             <React.Fragment>
-            <Navbar username={this.props.username} topic={article.belongs_to.title.toLowerCase()} page='article'/>
                 <Article key={article._id} article={article} />
             </React.Fragment>
             }

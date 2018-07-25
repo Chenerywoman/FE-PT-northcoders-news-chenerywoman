@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../styling/pages/MainPage.css'
 
-import { ArticleList, Navbar } from '../components'
+import { ArticleList} from '../components'
 import { fetchAllArticles } from '../dataFunctions/api';
 
 class MainPage extends Component {
@@ -51,7 +51,6 @@ class MainPage extends Component {
   render() {
     return (
       <div>
-        <Navbar username={this.props.username} page='main'/>
         {this.state.loading ? <div>Loading...</div>
           :
           <div className='page-container'>

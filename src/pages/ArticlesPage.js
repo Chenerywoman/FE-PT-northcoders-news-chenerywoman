@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ArticleList, Navbar } from '../components'
+import { ArticleList} from '../components'
 import { fetchTopicArticles } from '../dataFunctions/api';
 
 class ArticlesPage extends Component {
@@ -59,7 +59,6 @@ class ArticlesPage extends Component {
     render() {
         return (
             <div>
-                <Navbar username={this.props.username} page={this.props.match.params.topic}/>
                 {this.state.loading ? <div>Loading...</div>
                     :
                     <div>
