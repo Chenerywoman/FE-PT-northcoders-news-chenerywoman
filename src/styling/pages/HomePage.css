@@ -9,6 +9,10 @@ h1{
     color: royalblue;
 }
 
+#username {
+    color: orangered;
+}
+
 #loginform {
     width: 100%;
     float: center;
@@ -41,7 +45,7 @@ h1{
     font-size: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
     text-decoration: none;
-    background-color:#F0F8FF;
+    background-color:white;
     border: 1px solid dimgrey;
     border-radius: 10%;
     padding: 32px 64px;
@@ -53,7 +57,7 @@ h1{
     font-size: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
     text-decoration: none;
-    background-color:#F0F8FF;
+    background-color: white;
     border: 1px solid dimgrey;
     border-radius: 10%;
     padding: 32px 64px;
@@ -63,11 +67,11 @@ h1{
 
 #postarticle-link{
     text-decoration: none;
-    color: dimgrey
+    color: royalblue
 }
 
 #articles-link{
     text-decoration: none;
-    color: dimgrey; 
+    color: royalblue
 }
 
