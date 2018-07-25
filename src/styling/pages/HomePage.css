@@ -17,20 +17,12 @@
         width: 100%;
     }
 
-    /* body {
-        padding-top: 250px;
-    } */
 }
-
 
 [class*="col-"] {
     float: left;
     padding: 15px;
 }
-
-/* .row {
-    border: 1px solid red;
-} */
 
 .row::after {
     content: "";
