@@ -33,7 +33,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <React.Fragment>
-                <Navbar className='navbar' username={this.state.username} page={this.match}/>
+                <Navbar className='navbar' username={this.state.username}/>
                     <Switch>
                         <Route exact path='/' render={props => (< HomePage logUser={this.logUser} username={this.state.username}/> )} />
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
