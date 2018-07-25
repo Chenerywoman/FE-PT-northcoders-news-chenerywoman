@@ -3,17 +3,20 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styling/App.css';
 
 import {HomePage, MainPage, ArticlesPage, ArticlePage, PostArticlePage, NoMatchPage} from './pages';
+import {Navbar} from './components';
 
 class App extends Component {
 
-    state = {username: ''}
+    state = {
+        username: '',
+        page: ''
+    }
 
     logUser = (username) => {
         this.setState({username})
     }
 
     componentDidMount(){
-    
         if (localStorage.username) {
         const newUserName = localStorage.getItem('username')       
         this.setState({username: newUserName})
@@ -30,6 +33,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <React.Fragment>
+                <Navbar className='navbar' username={this.state.username} page={this.match}/>
                     <Switch>
                         <Route exact path='/' render={props => (< HomePage logUser={this.logUser} username={this.state.username}/> )} />
                         <Route exact path='/articles' render={props => (<MainPage username={this.state.username} {...props} /> )} /> 
