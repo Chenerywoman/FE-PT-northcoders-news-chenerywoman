@@ -45,7 +45,7 @@ class ArticlePage extends Component {
 }
 
     postComment = (created_by, comment) => {
-        return postCommentText(created_by, comment, 'articles', this.props.match.params.id, 'comments')
+        return postCommentText(created_by, comment, this.props.match.params.id)
             .then(res => {
                 if (res.error) {
                     return res.error
