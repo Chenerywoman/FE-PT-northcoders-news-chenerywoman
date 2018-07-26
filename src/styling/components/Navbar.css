@@ -1,49 +1,42 @@
-ul {
-    border: 1px solid #e7e7e7;
-    list-style-type: none;
-    margin: 0;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    /* padding: 0; 
-   overflow: hidden; */
-}
+.flex-container-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+      flex-direction: row;
+      list-style-type: none;
+      margin: 0;
+      top: 0;
+      padding: 0; 
+      width: 100%; 
+      border: 1px solid #e7e7e7;
+      background-color: white;
+      text-decoration: none;
+      list-style-type: none;
+     position: fixed;
+     font-size: 1.5rem;
+    }
 
- #home, #main, #coding, #football, #cooking, #post {
-    float: left;
-}
+    li {
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+
 
 #logo{
-    float: left;
     color: royalblue;
+    text-decoration: none;
 }
 
 #login {
-    color: orangered;
-    float: right;
+    color: royalblue;
     }
 
 .link {
-    display: block;
     color: dimgrey;
-    text-align: center;
-    padding: 1rem 2rem;
     text-decoration: none;
 }
 
 .link-active{
-    display: block;
     color: orangered;
-    text-align: center;
-    padding: 1rem 2rem;
     text-decoration: none;
-}
-
-@media screen and (max-width: 600px){
-    #logo, #home, #articles, #coding, #football, #cooking, #post, #login {float: none;}
-}
-
-.nav {
-    margin-bottom: 100px;
 }

@@ -8,15 +8,15 @@ class Navbar extends Component {
     render(){
     return (
     <nav>
-        <ul id='list'>
+        <ul className='flex-container-navbar'  >
             <li id='logo' className='link'> NCnewsLogo</li>
-            <li id='home' ><NavLink activeClassName='link-active' className='link' exact to='/'>Home</NavLink></li>
-            <li id='main'><NavLink activeClassName='link-active' className='link' exact to='/articles'>All</NavLink></li>
-            <li id='coding'><NavLink activeClassName='link-active' className='link' to='/articles/topic/coding' >Coding</NavLink></li>
-            <li id='football'><NavLink activeClassName='link-active' className='link' to='/articles/topic/football' >Football</NavLink></li>
-            <li id='cooking'><NavLink activeClassName='link-active' className='link' to='/articles/topic/cooking' >Cooking</NavLink></li>
-            <li id='post'><NavLink activeClassName='link-active' className='link' to='/postarticle'>Post</NavLink></li>
-            <li id='login'> <NavLink activeClassName='link-active' className='link' to='/'>{`${this.props.username}`}</NavLink></li>    
+            <li ><NavLink activeClassName='link-active' className='link' exact to='/'>Home</NavLink></li>
+            <li ><NavLink activeClassName='link-active' className='link' exact to='/articles'>All</NavLink></li>
+            <li ><NavLink activeClassName='link-active' className='link' to='/articles/topic/coding' >Coding</NavLink></li>
+            <li ><NavLink activeClassName='link-active' className='link' to='/articles/topic/football' >Football</NavLink></li>
+            <li ><NavLink activeClassName='link-active' className='link' to='/articles/topic/cooking' >Cooking</NavLink></li>
+            <li ><NavLink activeClassName='link-active' className='link' to='/postarticle'>Post</NavLink></li>
+            <li> <NavLink id='login' className='link' to='/'>{`${this.props.username}`}</NavLink></li>    
         </ul>
     </nav>
     )
