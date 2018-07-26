@@ -15,20 +15,14 @@ handleTextChange = event => {
 handleClick = event => {
     event.preventDefault();
     this.props.postComment(this.props.username, this.state.text)
-    .then(res => {
-        if (res) this.setState({err: res})
-        else {this.setState({userName:'', text: '', err: ''})}
-})
-    .catch(err => {
-        this.setState({err: err.statusText})
-    }
-    )
+    .then(res => this.setState({userName:'', text: ''}))
+    .catch(err => this.setState({err: err.statusText}))
 }
 
 render(){
 return (<form onSubmit={this.handleClick}>
 <h5>Add a comment</h5>
-{this.state.err ? <div> {this.state.err} </div> : <div></div> }
+{this.state.err &&  <div> {this.state.err} </div> }
     <label> Add text:
     <textarea name="comment" id="textbox" cols="52" rows="5" onChange={this.handleTextChange} value={this.state.text} placeholder='add text' /> 
     </label>
