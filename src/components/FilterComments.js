@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FilterComments = ({ filterComments, filtered }) => {
-    console.log('in filterComments')
 
     const handleVotedClick = (event) => {
         return filterComments('voted')

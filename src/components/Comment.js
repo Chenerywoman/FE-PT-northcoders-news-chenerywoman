@@ -5,7 +5,6 @@ import Votes from './Votes';
 import DeleteComment from './DeleteComment';
 
 const Comment = ({ comment, deleteComment, username }) => {
-    console.log('comment.created_by.username', comment.created_by.username, 'username', username)
     return (
         <div>
             <p> date:{comment.created_at} </p>
