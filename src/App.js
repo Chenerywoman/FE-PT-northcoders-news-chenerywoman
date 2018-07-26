@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styling/App.css';
 
-import {HomePage, MainPage, ArticlesPage, ArticlePage, PostArticlePage, NoMatchPage} from './pages';
+import {HomePage, ArticlesPage, ArticlePage, PostArticlePage, NoMatchPage} from './pages';
 import {Navbar} from './components';
 
 class App extends Component {
@@ -38,7 +38,7 @@ class App extends Component {
                         <Route exact path='/' render={props => < HomePage logUser={this.logUser} username={this.state.username}/> } />
                         <Route exact path='/articles' render={props => <ArticlesPage {...props} /> } /> 
                         <Route exact path='/articles/topic/:topic' render={props => <ArticlesPage {...props} />} />
-                        <Route exact path='/articles/:id' render={props => <ArticlePage {...props}/>} />
+                        <Route exact path='/articles/:id' render={props => <ArticlePage username={this.state.username}{...props}/>} />
                         <Route exact path='/postarticle' render={props => <PostArticlePage username={this.state.username}{...props} />} />
                         <Route component={NoMatchPage} />
                     </Switch>
