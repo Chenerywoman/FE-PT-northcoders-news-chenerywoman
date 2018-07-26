@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { ArticleList } from '../components'
 import { fetchAllArticles, fetchTopicArticles } from '../dataFunctions/api';
-import {mostPopular} from '../dataFunctions/helpers';
 
 class ArticlesPage extends Component {
 
