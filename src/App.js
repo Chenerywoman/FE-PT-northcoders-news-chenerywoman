@@ -32,8 +32,9 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <React.Fragment>
+                <div className='app-container'>
                 <Navbar className='navbar' username={this.state.username}/>
+                <div className='page'>
                     <Switch>
                         <Route exact path='/' render={props => < HomePage logUser={this.logUser} username={this.state.username}/> } />
                         <Route exact path='/articles' render={props => <ArticlesPage {...props} /> } /> 
@@ -42,7 +43,8 @@ class App extends Component {
                         <Route exact path='/postarticle' render={props => <PostArticlePage username={this.state.username}{...props} />} />
                         <Route component={NoMatchPage} />
                     </Switch>
-                </React.Fragment>
+                    </div>
+                </div>
             </BrowserRouter>
         )
     }
