@@ -12,3 +12,32 @@ html {
 
     box-sizing: border-box;
 }
+
+/* .app-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    'navbar navbar navbar navbar navbar navbar navbar navbar'
+    '. page page page page page page .'
+} */
+
+
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    'navbar'
+    'page'
+} 
+
+.navbar {
+    grid-area: navbar;
+}
+
+.page {
+    margin-top: 12.5rem ;
+    grid-area: page;
+}
+
