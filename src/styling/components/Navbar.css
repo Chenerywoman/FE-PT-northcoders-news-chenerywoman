@@ -1,8 +1,4 @@
-.flex-container-navbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-      flex-direction: row;
+.navbar {
       list-style-type: none;
       margin: 0;
       top: 0;
@@ -16,9 +12,9 @@
      font-size: 1.5rem;
     }
 
-    li {
+    .nav-link {
         text-align: center;
-        padding: 1rem 2rem;
+        padding: 0.25rem;
     }
 
 
