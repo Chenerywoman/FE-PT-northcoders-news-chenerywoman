@@ -1,22 +1,21 @@
 
 export const mostPopular = (articles) => {
-
-    return articles.sort((a, b) => {
+    const newArticles = [...articles]
+    const mostPopularArticles = newArticles.sort((a, b) => {
      return (b.votes + b.comments) - (a.votes + a.comments)
-
 })
-
+return mostPopularArticles;
 }
 export const mostVoted = (comments) => {
-
-    return comments.sort((a, b) => {
+    const newComments = [...comments]
+    return newComments.sort((a, b) => {
      return (b.votes) - (a.votes)
 
 })
 }
 export const mostRecent = (comments) => {
-
-    return comments.sort((a, b) => {
+    const newComments = [...comments]
+    return newComments.sort((a, b) => {
      return (b.created_at) - (a.created_at)
 
 })
@@ -36,9 +35,9 @@ export const chunkArray = (array, chunk) => {
 }
 
 export const isEmpty = (obj) => {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
+
+        if(Object.keys(obj).length)
             return false;
-    }
+    
     return true;
 }
