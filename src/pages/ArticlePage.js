@@ -17,24 +17,18 @@ class ArticlePage extends Component {
 
     fetchArticle = (id) => {
         return fetchArticleById(id)
-            .then(article => {
-                this.setState({ article })
-            })
+            .then(({article}) => this.setState({ article }))
             .catch(error => this.props.history.push('/404'))
 
     }
 
     fetchComments = (id) => {
         return fetchCommentsForArticle(id)
-            .then(comments => {
-                this.setState({ comments, loading: false });
-                return comments;
-            })
+            .then(({comments}) => this.setState({ comments, loading: false }))
             .catch(error => {
                 if (error.status === 404) {this.setState({loading: false })}
                 else {this.props.history.push('/404')}
-            }
-            )
+            })
             
     }
 
