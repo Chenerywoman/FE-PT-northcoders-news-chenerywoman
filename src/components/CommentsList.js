@@ -14,8 +14,8 @@ const CommentsList = ({comments, deleteComment, username}) =>  {
 
 CommentsList.propTypes = {
     comments: PropTypes.array,
-    deleteComment: PropTypes.deleteComment,
-    username: PropTypes.username
+    deleteComment: PropTypes.func,
+    username: PropTypes.string.isRequired
 }
 
 export default CommentsList;
