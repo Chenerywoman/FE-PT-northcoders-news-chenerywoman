@@ -13,16 +13,6 @@ html {
     box-sizing: border-box;
 }
 
-/* .app-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: 
-    'navbar navbar navbar navbar navbar navbar navbar navbar'
-    '. page page page page page page .'
-} */
-
-
 .app-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -37,7 +27,30 @@ html {
 }
 
 .page {
-    margin-top: 12.5rem ;
+    margin-top: 14rem ;
     grid-area: page;
 }
 
+@media (min-width: 350px) {
+
+    .app-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    'navbar navbar navbar'
+    '. page .'
+}
+
+.navbar {
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: space-evenly;
+}
+
+.page {
+    margin-top: 3rem ;
+}
+
+}    
