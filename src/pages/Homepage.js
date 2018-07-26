@@ -16,7 +16,7 @@ class HomePage extends Component {
 
     getUsers = () => {
         return getAllUsers()
-            .then(users => this.setState({ users: users }))
+            .then(({users}) => this.setState({ users: users }))
     }
 
     componentDidMount() {
