@@ -1,13 +1,12 @@
 .navbar {
-      list-style-type: none;
-      margin: 0;
-      top: 0;
-      padding: 0; 
-      width: 100%; 
-      border: 1px solid #e7e7e7;
-      background-color: white;
-      text-decoration: none;
-      list-style-type: none;
+    list-style-type: none;
+    margin: 0;
+    top: 0;
+    padding: 0; 
+    width: 100%; 
+    background-color: white;
+    text-decoration: none;
+    list-style-type: none;
      position: fixed;
      font-size: 1.5rem;
     }
