@@ -53,11 +53,6 @@ class ArticlesPage extends Component {
         this.setState({ index: this.state.index - 1, page: this.state.page - 1 })
     }
 
-    handleMostPopularClick = (event) => {
-        this.setState({ articles: mostPopular(this.state.articles), loading: false })
-      
-    }
-
     componentDidMount() {
         if (this.props.match.params.topic) {
             const topic = this.props.match.params.topic
@@ -96,7 +91,6 @@ class ArticlesPage extends Component {
                         <p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
                         <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> down...</button>
                         <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > up</button>
-                        <button onClick={this.handleMostPopularClick} > most popular</button>
                         <ArticleList topic={this.props.match.params.topic ? this.props.match.params.topic : ''} articles={this.state.articles[this.state.index]} history={this.props.history} />
                     </div>
                 }
