@@ -32,7 +32,7 @@ return (<form onSubmit={this.handleClick}>
     <label> Add text:
     <textarea name="comment" id="textbox" cols="52" rows="5" onChange={this.handleTextChange} value={this.state.text} placeholder='add text' /> 
     </label>
-    <button type="submit" disabled={!this.state.text ? true : false} >Submit</button>
+    <button type="submit" disabled={!this.state.text} >Submit</button>
     </form>
 )
 }
