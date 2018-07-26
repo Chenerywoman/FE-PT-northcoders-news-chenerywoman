@@ -33,11 +33,3 @@ export const chunkArray = (array, chunk) => {
     
     return results;
 }
-
-export const isEmpty = (obj) => {
-
-        if(Object.keys(obj).length)
-            return false;
-    
-    return true;
-}
