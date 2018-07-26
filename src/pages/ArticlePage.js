@@ -26,11 +26,11 @@ class ArticlePage extends Component {
 
     fetchComments = (id) => {
         return fetchCommentsForArticle(id)
-            .then(({ comments }) => this.setState({ comments, loading: false }))
-            .catch(error => {
-                if (error.status === 404) { this.setState({ loading: false }) }
-                else { this.props.history.push('/404') }
+            .then(res => {
+            if (res.comments) this.setState({ comments: res.comments, loading: false })
+            else if (res.error) this.setState({loading: false })
             })
+            .catch(error => this.props.history.push('/404'))
 
     }
 
