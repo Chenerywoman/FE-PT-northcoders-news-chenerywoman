@@ -37,8 +37,8 @@ export const changeVote = (vote, id, route) => {
         .then(res => res.json())
 }
 
-export const postCommentText = (created_by, comment, route, id, endpoint) => {
-    const url = `${API_URL}/${route}/${id}/${endpoint}`
+export const postCommentText = (created_by, comment, id) => {
+    const url = `${API_URL}/articles/${id}/comments`
     const body = { created_by, comment }
     return fetch(url, {
         method: 'POST',
