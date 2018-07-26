@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Article, CommentBox, CommentsList, FilterComments } from '../components';
 import { fetchArticleById, fetchCommentsForArticle, postCommentText, deleteText } from '../dataFunctions/api'
-import { mostRecent, mostVoted, isEmpty } from '../dataFunctions/helpers'
+import { mostRecent, mostVoted} from '../dataFunctions/helpers'
 
 class ArticlePage extends Component {
 
@@ -17,7 +16,10 @@ class ArticlePage extends Component {
 
     fetchArticle = (id) => {
         return fetchArticleById(id)
-            .then(({ article }) => this.setState({ article }))
+            .then(({ article }) => {
+            if (!article) throw new Error()
+            this.setState({ article })
+            })
             .catch(error => this.props.history.push('/404'))
 
     }
@@ -74,6 +76,7 @@ class ArticlePage extends Component {
             .then(res => {
                 if (res) return this.filterComments('recent')
             })
+            .catch(() => this.props.history.push('/404') )
     }
 
     render() {
@@ -81,14 +84,12 @@ class ArticlePage extends Component {
         return (
             <div>
                 {loading ? <p>Loading...</p> :
-                    isEmpty(article) ? <Redirect to='/404' /> :
                         <React.Fragment>
                             <Article key={article._id} article={article} />
                         </React.Fragment>
                 }
                 <CommentBox postComment={this.postComment} username={this.props.username} />
                 {loading ? <p>Loading...</p> :
-                    isEmpty(article) ? <Redirect to='/404' /> :
                         <React.Fragment>
                             {this.state.comments.length > 0 ?
                                 <div>
