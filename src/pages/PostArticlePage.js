@@ -15,24 +15,30 @@ class PostArticlePage extends Component {
     postArticle = (title, article, topic) => {
         return postArticleText(this.props.username, title, article, topic) 
         .then(res => { 
+            console.log('res in postArticle', res)
             if (res.error) {
                 return res.error
             } else { 
-                this.setState({new_article: res.new_article}) }}
+                this.setState({new_article: res.new_article}) 
+                return res.new_article
+            }
+        }
         )   
 }
 render() {
     return (
     <React.Fragment>
     <ArticleBox postArticle={this.postArticle}/>
-    {this.state.newArticle ?  <div>Your article has been posted!</div> : <div></div>}
-    <Link to={`/articles/${this.state.new_article._id}`} >  <p>{this.state.new_article.title}</p> </Link>
+    {
+    this.state.new_article && 
+     <Link to={`/articles/${this.state.new_article._id}`} > <span>{this.state.new_article.title}</span> </Link>
+    }
     </React.Fragment>
     )
-
+}
 }
 
-}
+
 
 PostArticlePage.propTypes = {
     username: PropTypes.string.isRequired
