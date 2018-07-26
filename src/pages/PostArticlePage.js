@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {ArticleBox, Navbar} from '../components';
+import {ArticleBox} from '../components';
 import {postArticleText} from '../dataFunctions/api';
 
 
