@@ -48,9 +48,10 @@ class ArticlePage extends Component {
 
     postComment = (created_by, comment) => {
         return postCommentText(created_by, comment, this.props.match.params.id)
-            .then(res => {
-                const amendedComments = [res.new_comment, ...this.state.comments]
+            .then(({new_comment}) => {
+                const amendedComments = [new_comment, ...this.state.comments]
                 this.setState({ comments: amendedComments })
+                return new_comment;
             })
             .catch(error => {
                 this.props.history.push('/404') 
