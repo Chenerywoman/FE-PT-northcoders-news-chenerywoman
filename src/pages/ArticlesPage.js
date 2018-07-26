@@ -81,7 +81,6 @@ class ArticlesPage extends Component {
     }
 
     render() {
-        console.log('this.state.articles', this.state.articles)
         return (
             <div>
                 {this.state.loading ? <div>Loading...</div>
