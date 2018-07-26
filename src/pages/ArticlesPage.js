@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ArticleList } from '../components'
 import { fetchAllArticles, fetchTopicArticles } from '../dataFunctions/api';
+import {mostPopular, chunkArray} from '../dataFunctions/helpers';
 
 class ArticlesPage extends Component {
 
@@ -15,6 +16,10 @@ class ArticlesPage extends Component {
 
     fetchArticles = () => {
         return fetchAllArticles()
+        .then(({ articles }) => {
+            const sortedArticles = mostPopular(articles)
+            return chunkArray(sortedArticles, 10)
+        })
             .then(articles => {
                 this.setState({ articles, loading: false })
             })
@@ -26,6 +31,10 @@ class ArticlesPage extends Component {
     fetchArticlesByTopic = (topic) => {
 
         return fetchTopicArticles(topic)
+        .then(({ articles }) => {
+            const sortedArticles = mostPopular(articles)
+            return chunkArray(sortedArticles, 10)
+        })
             .then(articles => {
                 this.setState({ articles, loading: false })
             })
