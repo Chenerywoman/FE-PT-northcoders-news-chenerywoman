@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { ArticleList } from '../components'
 import { fetchAllArticles, fetchTopicArticles } from '../dataFunctions/api';
 import {mostPopular, chunkArray} from '../dataFunctions/helpers';
+import '../styling/pages/ArticlesPage.css'
 
 class ArticlesPage extends Component {
 
@@ -91,15 +91,19 @@ class ArticlesPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className='articlespage-container'>
                 {this.state.loading ? <div>Loading...</div>
                     :
-                    <div>
-                        <p>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
-                        <button onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> down...</button>
-                        <button onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > up</button>
-                        <ArticleList topic={this.props.match.params.topic ? this.props.match.params.topic : ''} articles={this.state.articles[this.state.index]} history={this.props.history} />
-                    </div>
+                    <React.Fragment>
+                        <div className='paginator-container'>
+                        <div className='paginator'>
+                        <p className='paginator-page'>Page {`${this.state.page}`} of {`${this.state.articles.length}`}</p>
+                        <button className='paginator-button-down' onClick={this.handleDownClick} disabled={this.state.page < 2 ? true : false}> down</button>
+                        <button className='paginator-button-up' onClick={this.handleUpClick} disabled={this.state.page > this.state.articles.length - 1 ? true : false} > up</button>
+                        </div>
+                        </div>
+                        <div className='article-list'><ArticleList topic={this.props.match.params.topic ? this.props.match.params.topic : ''} articles={this.state.articles[this.state.index]} history={this.props.history} /></div>
+                    </React.Fragment>
                 }
             </div>
         );
