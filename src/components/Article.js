@@ -13,7 +13,7 @@ const Article = ({article}) => {
           <div id='user'><User name={article.created_by.username} avatar={article.created_by.avatar_url} /></div>
             <div id='topic' >topic:{article.belongs_to.title}</div>
           <p id='article'>{article.body}</p>
-          <p id='comments'>comments: {article.comments}</p>
+          <div id='comments'>comments: {article.comments}</div>
           <div id='votes'><Votes votes={article.votes} id={article._id} route="articles"/></div>
          </div>
 
