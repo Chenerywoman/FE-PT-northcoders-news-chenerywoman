@@ -1,0 +1,35 @@
+#article-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr 4fr 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    ' . article-title article-title . .'
+    '. topic topic . .'
+    '. article article user .'
+    '. comments votes . .';
+} 
+
+#article-title {
+    grid-area: article-title;
+}
+
+#user {
+    grid-area: user;
+    margin-left: 1rem;
+}
+
+#topic {
+    grid-area: topic;
+}
+#article {
+    grid-area: article;
+}
+
+#comments {
+    grid-area: comments;
+}
+#votes {
+    grid-area: votes;
+}
+
+
