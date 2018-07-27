@@ -2,20 +2,20 @@ import React from 'react';
 import Votes from '../components/Votes';
 import User from './User';
 import PropTypes from 'prop-types';
-
 import {Link} from 'react-router-dom';
+import '../styling/components/Article.css'
 
 const Article = ({article}) => {
 
     return (
-        <React.Fragment>
-           <Link key={article._id} to={`/articles/${article._id}`} >  <p>{article.title}</p> </Link>
-           <div>  created by: </div> <User name={article.created_by.username} avatar={article.created_by.avatar_url} /> 
-            <div>topic:{article.belongs_to.title}</div>
-          <p>{article.body}</p>
-          <p>comments: {article.comments}</p>
-          <Votes votes={article.votes} id={article._id} route="articles"/> 
-         </React.Fragment>
+        <div id='article-container'>
+          <div id='article-title'> <Link key={article._id} to={`/articles/${article._id}`} >  <p>{article.title}</p> </Link></div>
+          <div id='user'><User name={article.created_by.username} avatar={article.created_by.avatar_url} /></div>
+            <div id='topic' >topic:{article.belongs_to.title}</div>
+          <p id='article'>{article.body}</p>
+          <p id='comments'>comments: {article.comments}</p>
+          <div id='votes'><Votes votes={article.votes} id={article._id} route="articles"/></div>
+         </div>
 
     )
 }
