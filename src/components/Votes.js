@@ -30,7 +30,6 @@ class Votes extends Component {
     render() {
         return (
             <div>
-                <h4>Votes</h4>
                 <p>votes: {this.state.votes}</p>
                 <button onClick={this.handleUpClick} >Up Vote</button>
                 <button onClick={this.handleDownClick} >Down Vote</button>
