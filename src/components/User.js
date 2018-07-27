@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styling/components/user.css';
+import '../styling/components/User.css';
 
 const User = ({name, avatar}) => {
 
