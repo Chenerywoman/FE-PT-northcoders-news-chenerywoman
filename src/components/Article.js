@@ -9,7 +9,7 @@ const Article = ({article}) => {
 
     return (
         <div id='article-container'>
-          <div id='article-title'> <Link key={article._id} to={`/articles/${article._id}`} >  <p>{article.title}</p> </Link></div>
+          <div id='article-title'> <Link key={article._id} to={`/articles/${article._id}`} >  <p id='article-title-wording' >{article.title}</p> </Link></div>
           <div id='user'><User name={article.created_by.username} avatar={article.created_by.avatar_url} /></div>
             <div id='topic' >topic:{article.belongs_to.title}</div>
           <p id='article'>{article.body}</p>
