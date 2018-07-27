@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {changeVote} from '../dataFunctions/api';
 import PropTypes from 'prop-types';
+import '../styling/components/Votes.css'
 
 class Votes extends Component {
 
@@ -31,8 +32,8 @@ class Votes extends Component {
         return (
             <React.Fragment>
                 <span>votes: {this.state.votes}  </span>
-                <button onClick={this.handleUpClick} >Up Vote</button>
-                <button onClick={this.handleDownClick} >Down Vote</button>
+                <button className='down-vote' onClick={this.handleDownClick} >-</button>
+                <button className='up-vote' onClick={this.handleUpClick} >+</button>
             </React.Fragment>
 
         )

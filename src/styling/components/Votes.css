@@ -1,0 +1,23 @@
+.up-vote{
+    grid-area: paginator-button-up;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background-color:orangered;
+    border: 1px solid dimgrey;
+    border-radius: 10%;
+    padding: 8px 16px;
+    margin: 2px 4px;
+}  
+
+.down-vote{
+    grid-area: paginator-button-up;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background-color:royalblue;
+    border: 1px solid dimgrey;
+    border-radius: 10%;
+    padding: 8px 16px;
+    margin: 2px 4px;
+}  
