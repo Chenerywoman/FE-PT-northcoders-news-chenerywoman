@@ -30,7 +30,7 @@ class Votes extends Component {
     render() {
         return (
             <div>
-                <p>votes: {this.state.votes}</p>
+                <span>votes: {this.state.votes}</span>
                 <button onClick={this.handleUpClick} >Up Vote</button>
                 <button onClick={this.handleDownClick} >Down Vote</button>
             </div>
