@@ -12,7 +12,6 @@
 }
 
 .paginator {
-    border: 1px solid black;
     grid-area: paginator;
     display: grid;
     grid-template-columns: 1fr 4fr 4fr 1fr;
@@ -106,7 +105,7 @@
 @media (min-width: 750px) {
 
     .articlespage-container {
-        grid-template-columns: 10fr 5fr;
+        grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
         grid-template-areas: 
         '.  paginator-container'
@@ -114,7 +113,6 @@
     }
 
     .paginator {
-        border: 1px solid red;
         grid-template-columns: 3fr 2fr 2fr;
         grid-template-rows: auto;
         position: fixed;
@@ -132,7 +130,6 @@
 @media (min-width: 800px) {
 
     .articlespage-container {
-        border: 1px solid black;
         grid-template-columns:  20fr 5fr;
         grid-template-rows: auto;
         grid-template-areas: 
@@ -140,12 +137,7 @@
         'article-list article-list';
     }
 
-    .paginator-container {
-        border: 1px solid blue;
-    }
-
     .paginator {
-        border: 1px solid red;
         grid-template-columns: 3fr 2fr 2fr;
         grid-template-rows: auto;
         position: fixed;
