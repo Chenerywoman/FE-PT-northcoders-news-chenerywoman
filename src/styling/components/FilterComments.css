@@ -1,22 +1,62 @@
+#filter-comments-container {
+ margin-top: 3rem;
+ display: grid;
+ grid-template-columns: 1fr 2fr 1fr 2fr;
+ grid-template-rows: auto;
+ grid-template-areas:
+ '. comments-title filterButton .'
+}
+
+.filterButton {
+    grid-area: filterButton;
+}
+
 #mostVoted {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-family: 'Courier New', Courier, monospace;
-    color: royalblue;
+    color: dimgrey;
     background-color:white;
-    border: 1px solid royalblue;
+    border: 1px solid dimgrey;
     border-radius: 10%;
-    padding: 8px 16px;
+    padding: 8px 8px;
     margin: 2px 2px;
 
 }
 
 #mostRecent {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-family: 'Courier New', Courier, monospace;
     color: white;
-    background-color:royalblue;
-    border: 1px solid dimgrey;
+    background-color:dimgrey;
+    border: 1px solid white;
     border-radius: 10%;
-    padding: 8px 16px;
+    padding: 8px 4px;
     margin: 2px 2px;
+}
+
+#comments-title {
+    grid-area: comments-title;
+    font-size: 2rem;
+    color: grey;
+}
+
+@media (max-width: 770px) {
+
+    #filter-comments-container {
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+        '. comments-title . '
+        '. filterButton . '
+       }
+
+       #comments-title {
+        font-size: 1.5rem;
+    }
+
+    .filterButton {
+        font-size: 1rem;
+    }
+    
+
 }

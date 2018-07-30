@@ -12,12 +12,13 @@ const FilterComments = ({ filterComments, filtered }) => {
         return filterComments('recent')
     }
     return (
-        <React.Fragment>
+        <div id='filter-comments-container'>
+            <span id='comments-title'>Comments</span>
             {
-                filtered === 'voted' ? <button id='mostRecent' onClick={handleRecentClick}>most recent</button>
-                    : <button id='mostVoted' onClick={handleVotedClick}>most voted</button>
+                filtered === 'voted' ? <button className='filterButton' id='mostRecent' onClick={handleRecentClick}>most recent</button>
+                    : <button className='filterButton' id='mostVoted' onClick={handleVotedClick}>most voted</button>
             }
-        </React.Fragment>
+        </div>
     )
 
 }
