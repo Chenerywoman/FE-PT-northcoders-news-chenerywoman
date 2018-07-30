@@ -8,7 +8,6 @@
     '. article article article user .'
     '. article article article . .'
     ' . comments votes topic . .';
-    /* border: 1px solid red; */
 } 
 
 #article-title {
@@ -19,13 +18,11 @@
 #user {
     grid-area: user;
     margin-left: 1rem;
-    /* border: 1px solid black */
 }
 
 #topic {
     grid-area: topic;
-    /* border: 1px solid black; */
-    padding: 1rem;  
+    padding: 2rem;  
 }
 #article {
     grid-area: article;
@@ -38,19 +35,17 @@
 
 #comments {
     grid-area: comments;
-    /* border: 1px solid black; */
-    padding: 1rem;  
+    padding: 2rem; 
+     
 }
 #votes {
     grid-area: votes;
-    /* border: 1px solid red; */
     padding: 1rem;
 }
 
 #article-title-wording {
     color: royalblue;
     font-size: 1.75rem;
-    /* border: 1px solid blue; */
-    /* padding: 0; */
     margin: 0;
 }
+
