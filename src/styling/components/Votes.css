@@ -1,5 +1,18 @@
-.up-vote{
-    grid-area: paginator-button-up;
+#votes-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+  'votes votes' 
+  'down-vote up-vote'
+} 
+
+#votes {
+    grid-area: 'votes';
+}
+
+#article-up-vote{
+    grid-area: 'up-vote';
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
     color: white;
@@ -7,11 +20,11 @@
     border: 1px solid dimgrey;
     border-radius: 10%;
     padding: 8px 16px;
-    margin: 2px 4px;
+    margin: 2px 2px;
 }  
 
-.down-vote{
-    grid-area: paginator-button-up;
+#article-down-vote{
+    grid-area: 'down-vote';
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
     color: white;
@@ -19,5 +32,15 @@
     border: 1px solid dimgrey;
     border-radius: 10%;
     padding: 8px 16px;
-    margin: 2px 4px;
+    margin: 2px 2px;
 }  
+
+@media (min-width: 750px) {
+    #votes-container {
+        display: grid;
+        grid-template-columns: 8fr 2fr 2fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+      'votes down-vote up-vote'
+    } 
+} 
