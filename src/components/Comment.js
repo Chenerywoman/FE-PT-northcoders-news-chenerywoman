@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import User from './User';
 import Votes from './Votes';
 import DeleteComment from './DeleteComment';
+import '../styling/components/Comment.css'
 
 const Comment = ({ comment, deleteComment, username }) => {
     return (
@@ -12,7 +13,7 @@ const Comment = ({ comment, deleteComment, username }) => {
             <div id='comment-votes'><Votes votes={comment.votes} id={comment._id} route='comments' /></div>
             <div id='comment-user'><User name={comment.created_by.username} avatar={comment.created_by.avatar_url} /></div>
             { username === comment.created_by.username &&
-           <div id='delete-comment'> <DeleteComment name={comment.created_by.username} id={comment._id} deleteComment={deleteComment} username={username}/></div>
+           <div id='delete'> <DeleteComment name={comment.created_by.username} id={comment._id} deleteComment={deleteComment} username={username}/></div>
             }
         </div>
     )
