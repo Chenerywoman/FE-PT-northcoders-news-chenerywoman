@@ -6,13 +6,13 @@ import DeleteComment from './DeleteComment';
 
 const Comment = ({ comment, deleteComment, username }) => {
     return (
-        <div>
-            <p> date:{comment.created_at} </p>
-            <p>{comment.body}</p>
-            <Votes votes={comment.votes} id={comment._id} route='comments' />
-            <User name={comment.created_by.username} avatar={comment.created_by.avatar_url} />
+        <div id='comment-container'>
+            <p id='date'> date:{comment.created_at} </p>
+            <p id='comment'>{comment.body}</p>
+            <div id='comment-votes'><Votes votes={comment.votes} id={comment._id} route='comments' /></div>
+            <div id='comment-user'><User name={comment.created_by.username} avatar={comment.created_by.avatar_url} /></div>
             { username === comment.created_by.username &&
-            <DeleteComment name={comment.created_by.username} id={comment._id} deleteComment={deleteComment} username={username}/>
+           <div id='delete-comment'> <DeleteComment name={comment.created_by.username} id={comment._id} deleteComment={deleteComment} username={username}/></div>
             }
         </div>
     )
