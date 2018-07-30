@@ -49,3 +49,35 @@
     margin: 0;
 }
 
+
+
+ @media (max-width: 770px) {
+    
+    #article-container {
+        grid-template-columns: 1fr 3fr 3fr 3fr 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        ' . article-title article-title article-title . .'
+        '. user user user . .'
+        '. article article article . .'
+        '. article article article . .'
+        '. article article article . .'
+        ' . comments votes topic . .';
+    }  
+} 
+
+
+@media (min-width: 1000px) {
+
+    #article-container {
+        grid-template-columns: 1fr 3fr 3fr 3fr 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        ' . article-title article-title article-title . .'
+        '. article article article . .'
+        '. article article article user .'
+        '. article article article . .'
+        ' . comments votes topic . .';
+    } 
+
+}
