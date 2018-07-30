@@ -8,3 +8,11 @@
     padding: 8px 16px;
     margin: 2px 2px;
 }
+
+@media (max-width: 770px) { 
+    font-size: 1rem;
+}
+
+@media (min-width: 550px) {
+    font-size: 1.25rem;
+}
