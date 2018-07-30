@@ -1,0 +1,34 @@
+#article-page-container {
+    display: grid;
+    grid-template-columns: 10fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    /* '. article-main article-main .'
+    '. comment-box-main comment-box-main .'
+    ' . comments-title filter-comments-main .'
+    ' . comments-list-main comments-list-main .'; */
+    'article-main'
+    'comment-box-main'
+    'comments-title'
+     'filter-comments-main'
+    'comments-list-main';
+
+}
+
+#article-main {
+    grid-area: article-main;
+}
+
+#comment-box-main {
+    grid-area: comment-box-main;
+}
+
+#filter-comments-main {
+    grid-area: filter-comments-main;
+    font-size: 2rem;
+    color: grey;
+}
+
+#comments-list-main {
+    grid-area: comments-list-main; 
+}

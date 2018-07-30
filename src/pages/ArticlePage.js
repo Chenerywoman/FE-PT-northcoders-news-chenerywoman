@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { Article, CommentBox, CommentsList, FilterComments } from '../components';
 import { fetchArticleById, fetchCommentsForArticle, postCommentText, deleteText } from '../dataFunctions/api'
-import { mostRecent, mostVoted} from '../dataFunctions/helpers'
+import { mostRecent, mostVoted } from '../dataFunctions/helpers';
+import '../styling/pages/ArticlePage.css'
 
 class ArticlePage extends Component {
 
@@ -17,8 +17,8 @@ class ArticlePage extends Component {
     fetchArticle = (id) => {
         return fetchArticleById(id)
             .then(({ article }) => {
-            if (!article) throw new Error()
-            this.setState({ article })
+                if (!article) throw new Error()
+                this.setState({ article })
             })
             .catch(error => this.props.history.push('/404'))
 
@@ -27,8 +27,8 @@ class ArticlePage extends Component {
     fetchComments = (id) => {
         return fetchCommentsForArticle(id)
             .then(res => {
-            if (res.comments) this.setState({ comments: res.comments, loading: false })
-            else if (res.error) this.setState({loading: false })
+                if (res.comments) this.setState({ comments: res.comments, loading: false })
+                else if (res.error) this.setState({ loading: false })
             })
             .catch(error => this.props.history.push('/404'))
 
@@ -48,14 +48,14 @@ class ArticlePage extends Component {
 
     postComment = (created_by, comment) => {
         return postCommentText(created_by, comment, this.props.match.params.id)
-            .then(({new_comment}) => {
+            .then(({ new_comment }) => {
                 const amendedComments = [new_comment, ...this.state.comments]
                 this.setState({ comments: amendedComments })
                 return new_comment;
             })
             .catch(error => {
-                this.props.history.push('/404') 
-               })
+                this.props.history.push('/404')
+            })
     }
 
     deleteComment = (id, username) => {
@@ -65,7 +65,7 @@ class ArticlePage extends Component {
                 this.setState({ comments: amendedComments })
             })
             .catch(error => {
-             this.props.history.push('/404') 
+                this.props.history.push('/404')
             })
     }
 
@@ -77,29 +77,26 @@ class ArticlePage extends Component {
             .then(res => {
                 if (res) return this.filterComments('recent')
             })
-            .catch(() => this.props.history.push('/404') )
+            .catch(() => this.props.history.push('/404'))
     }
 
     render() {
         const { loading, article } = this.state
         return (
-            <div>
+            <div id='article-page-container'>
                 {loading ? <p>Loading...</p> :
-                        <React.Fragment>
-                            <Article key={article._id} article={article} />
-                        </React.Fragment>
+                    <div id='article-main'> <Article key={article._id} article={article} /></div>
                 }
-                <CommentBox postComment={this.postComment} username={this.props.username} />
+                <div id='comment-box-main'><CommentBox postComment={this.postComment} username={this.props.username} /></div>
                 {loading ? <p>Loading...</p> :
-                        <React.Fragment>
-                            {this.state.comments.length > 0 ?
-                                <div>
-                                    <FilterComments filterComments={this.filterComments} filtered={this.state.filtered} />
-                                    <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username} />
-                                </div>
-                                : <div> </div>
-                            }
-                        </React.Fragment>
+                    <React.Fragment>
+                        {this.state.comments.length > 0 &&
+                            <React.Fragment>
+                                <div id='filter-comments-main'><FilterComments filterComments={this.filterComments} filtered={this.state.filtered} /></div>
+                                <div id='comments-list-main'><CommentsList comments={this.state.comments} deleteComment={this.deleteComment} username={this.props.username} /></div>
+                            </React.Fragment>
+                        }
+                    </React.Fragment>
                 }
             </div>
         )
