@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import User from './User';
 import Votes from './Votes';
 import DeleteComment from './DeleteComment';
-import '../styling/components/Comment.css'
+import '../styling/components/Comment.css';
+const moment = require('moment');
+
 
 const Comment = ({ comment, deleteComment, username }) => {
     return (
         <div id='comment-container'>
-            <p id='date'> date:{comment.created_at} </p>
+            <p id='date'> {moment(comment.created_at).format('Mo MMM YYYY')} </p>
             <p id='comment'>{comment.body}</p>
             <div id='comment-votes'><Votes votes={comment.votes} id={comment._id} route='comments' /></div>
             <div id='comment-user'><User name={comment.created_by.username} avatar={comment.created_by.avatar_url} /></div>
