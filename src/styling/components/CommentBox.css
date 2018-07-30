@@ -1,0 +1,54 @@
+#comment-box {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr;
+grid-template-rows: auto;
+grid-template-areas:
+'. . . comment-box-title comment-box-title comment-box-title . . .'
+'. textbox textbox textbox textbox textbox textbox textbox .'
+'. . . . comment-box-submit . . . .';
+}
+
+#comment-box-title {
+    grid-area:comment-box-title;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: orangered;
+}
+
+#textbox {
+    grid-area:textbox;
+    font-size: 1.25rem;
+    padding: 2rem;
+    border-radius: 10%;
+    margin-bottom: 1rem;
+}
+
+#comment-box-submit {
+    grid-area:comment-box-submit;
+    font-size: 1.25rem;
+    border-radius: 10%;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background-color:royalblue;
+    border: 1px solid white;
+    padding: 8px 16px;
+    margin: 2px 2px;
+}
+
+@media (max-width: 770px) {
+
+    #comment-box-title {
+        font-size: 1.25rem;
+    }
+    
+    #textbox {
+        font-size: 1rem;
+    
+    }
+    
+    #comment-box-submit {
+        font-size: 1rem;
+    }
+
+}
