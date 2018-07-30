@@ -1,0 +1,22 @@
+#mostVoted {
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: royalblue;
+    background-color:white;
+    border: 1px solid royalblue;
+    border-radius: 10%;
+    padding: 8px 16px;
+    margin: 2px 2px;
+
+}
+
+#mostRecent {
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background-color:royalblue;
+    border: 1px solid dimgrey;
+    border-radius: 10%;
+    padding: 8px 16px;
+    margin: 2px 2px;
+}

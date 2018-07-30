@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styling/components/FilterComments.css'
 
 const FilterComments = ({ filterComments, filtered }) => {
 
@@ -13,8 +14,8 @@ const FilterComments = ({ filterComments, filtered }) => {
     return (
         <React.Fragment>
             {
-                filtered === 'voted' ? <button onClick={handleRecentClick}>filter by most recent</button>
-                    : <button onClick={handleVotedClick}>filter by most voted</button>
+                filtered === 'voted' ? <button id='mostRecent' onClick={handleRecentClick}>most recent</button>
+                    : <button id='mostVoted' onClick={handleVotedClick}>most voted</button>
             }
         </React.Fragment>
     )
