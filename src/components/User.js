@@ -6,7 +6,7 @@ const User = ({name, avatar}) => {
 
 return (
     <span>
-  <p>{name}</p>
+  <p id='name'>{name}</p>
     <img id='avatar' src={name === 'cooljmessy' ? "https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/185?cb=20170730171002" : name === 'weegembump' ? "https://vignette.wikia.nocookie.net/mrmen/images/f/fb/MR_BUMP_3A.PNG/revision/latest/scale-to-width-down/150?cb=20170527174939" : avatar} alt="avatar" height='75' width='75'></img>
     </span>
 )
