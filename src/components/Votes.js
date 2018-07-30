@@ -30,11 +30,11 @@ class Votes extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <span>votes: {this.state.votes}  </span>
-                <button className='down-vote' onClick={this.handleDownClick} >-</button>
-                <button className='up-vote' onClick={this.handleUpClick} >+</button>
-            </React.Fragment>
+            <div id='votes-container'>
+                <span id='votes'>votes: {this.state.votes}  </span>
+                <button id='article-down-vote' onClick={this.handleDownClick} >-</button>
+                <button id='article-up-vote' onClick={this.handleUpClick} >+</button>
+            </div>
 
         )
     }
