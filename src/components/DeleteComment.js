@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styling/components/DeleteComment.css'
 
 const DeleteComment = ({deleteComment, id, username}) =>  {
 
@@ -8,8 +9,7 @@ const handleClick = (event) => {
    deleteComment(id, username)
 }
         return (<form onSubmit={handleClick}>
-        <h4>Delete comment</h4>
-        <button type="submit" >Delete</button>
+        <button id='delete-comment' type="submit" >Delete</button>
         </form>
         )
 }
