@@ -1,0 +1,29 @@
+#post-article-container{
+display: grid;
+grid-template-columns: '';
+grid-template-rows: auto;
+grid-template-areas: 
+'post-article-box'
+'posted-success-title'
+'posted-article'
+}
+
+#post-article-box {
+    grid-area: post-article-box;
+}
+
+#posted-success-title {
+    grid-area: posted-success-title;
+    font-size: 2rem;
+    margin: 2rem;
+    color: dimgrey;
+}
+
+#posted-article {
+    grid-area: posted-article;
+    font-size: 1.5rem;
+}
+
+#posted-article-link {
+    text-decoration: none;
+}
