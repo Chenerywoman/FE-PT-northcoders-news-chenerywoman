@@ -2,28 +2,32 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styling/components/Navbar.css';
-import NClogo from '../styling/NClogo.png';
+import {NClogo, BeeLogo} from '../styling/logos';
 import { getUser } from '../dataFunctions/api'
 
 class Navbar extends Component {
 
     state = {
-        avatar: '',
+        avatar: BeeLogo,
     }
 
     componentDidMount() {
         if (this.props.username) {
+            console.log('username in componentDidMount', this.props.username)
             getUser(this.props.username)
                 .then(({ user }) => {
+                    console.log('user in componentDidMount', user)
                     this.setState({ avatar: user.avatar_url })
                 })
         }
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.username !== prevProps.username) {
+        if (this.props.username && this.props.username !== prevProps.username) {
+            console.log('username in componentDidUpdate', this.props.username)
             getUser(this.props.username)
                 .then(({ user }) => {
+                    console.log('user in componentDidUpdate', user)
                     this.setState({ avatar: user.avatar_url })
 
                 })
