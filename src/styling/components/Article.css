@@ -1,13 +1,15 @@
 #article-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr 3fr 3fr 2fr 1fr;
+    grid-template-columns: 3fr 3fr 3fr;
     grid-template-rows: auto;
     grid-template-areas: 
-    ' . article-title article-title article-title . .'
-    '. article article article . .'
-    '. article article article user .'
-    '. article article article . .'
-    ' . comments votes topic . .';
+    ' article-title article-title article-title'
+    'user user user'
+    ' . topic .'
+    'article article article'
+    'article article article'
+    'article article article'
+    '. comments .'
+    '. votes .';
 } 
 
 #article-title {
@@ -15,82 +17,44 @@
     margin-top: 2rem;
 }
 
+#article-title-wording {
+    color: royalblue;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
 #user {
     grid-area: user;
-    margin-left: 1.25rem;
+    margin-left: 1rem;
 }
 
 #topic {
     grid-area: topic;
-    padding: 2rem;  
-    font-size: 1.25rem;
+    padding: 0.5rem;  
+    font-size: 1rem;
 }
 #article {
     grid-area: article;
     text-align: justify;
     border: 1px solid royalblue;
     border-radius: 10%;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 0;
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 #comments {
     grid-area: comments;
-    padding: 2rem; 
-    font-size: 1.25rem;
+    padding: 0.5rem; 
+    font-size: 1rem;
      
 }
 #votes {
     grid-area: votes;
-    padding: 1rem;
-    font-size: 1.25rem;
+    padding: 0.5rem;
+    font-size: 1rem;
 }
 
-#article-title-wording {
-    color: royalblue;
-    font-size: 1.75rem;
-    margin: 0;
-}
-
-
-
- @media (max-width: 770px) {
-    
-    #article-container {
-        grid-template-columns: 1fr 3fr 3fr 3fr 2fr 1fr;
-        grid-template-rows: auto;
-        grid-template-areas: 
-        ' . article-title article-title article-title . .'
-        '. user user user . .'
-        '. article article article . .'
-        '. article article article . .'
-        '. article article article . .'
-        ' . comments votes topic . .';
-    }  
-
-    #article-title-wording {
-        font-size: 1.25rem;
-    }
-
-    #topic {
-        font-size: 1rem;
-    }
-    #article {
-        font-size: 1rem;
-    }
-    
-    #comments {
-        font-size: 1rem;
-         
-    }
-    #votes {
-        font-size: 1rem;
-    }
-
-
-
-} 
 
 @media (min-width: 550px) {
 
@@ -113,6 +77,21 @@
         font-size: 1.25rem;
     }
 
-
 }
+
+
+ @media (min-width: 770px) {
+    
+    #article-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr 3fr 3fr 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        ' . article-title article-title article-title . .'
+        '. article article article . .'
+        '. article article article user .'
+        '. article article article . .'
+        ' . comments votes topic . .';
+    }  
+} 
 

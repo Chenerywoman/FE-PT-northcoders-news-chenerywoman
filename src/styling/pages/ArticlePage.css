@@ -1,6 +1,6 @@
 #article-page-container {
     display: grid;
-    grid-template-columns: 4fr 5fr 4fr;
+    grid-template-columns: 1fr 15fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: 
     '. article-main .'
@@ -27,20 +27,6 @@
 #comments-list-main {
     grid-area: comments-list-main; 
 }
-
-/* @media (min-width: 350px) {
-
-    #article-page-container {
-    grid-template-columns: 10fr;
-    grid-template-rows: auto;
-    grid-template-areas: 
-    'article-main'
-    'comment-box-main'
-    'comments-title'
-     'filter-comments-main'
-    'comments-list-main';
-    }
-} */
 
 @media (min-width: 750px) {
 
