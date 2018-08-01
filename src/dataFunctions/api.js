@@ -76,3 +76,11 @@ export const getAllUsers = () => {
     return fetch(url)
         .then(res => res.json())
 }
+
+export const getUser = (username) => {
+    const url = `${API_URL}/users/${username}`
+    return fetch(url)
+        .then(res => res.json())
+}
+
+
