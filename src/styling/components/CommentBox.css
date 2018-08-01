@@ -38,6 +38,15 @@ grid-template-areas:
 
 @media (max-width: 770px) {
 
+    #comment-box {
+        grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+        '. comment-box-title comment-box-title comment-box-title .'
+        '. textbox textbox textbox .'
+        '. . comment-box-submit . .';
+        }
+
     #comment-box-title {
         font-size: 1.25rem;
     }
