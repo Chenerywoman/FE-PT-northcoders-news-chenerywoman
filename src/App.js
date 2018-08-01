@@ -36,7 +36,7 @@ class App extends Component {
                 <Navbar className='navbar' username={this.state.username}/>
                 <div className='page'>
                     <Switch>
-                        {/* <Route exact path='/' render={props => < HomePage logUser={this.logUser} username={this.state.username}/> } /> */}
+                        <Route exact path='/' render={props => < HomePage logUser={this.logUser} username={this.state.username}/> } />
                         <Route exact path='/articles' render={props => <ArticlesPage {...props} /> } /> 
                         <Route exact path='/articles/topic/:topic' render={props => <ArticlesPage {...props} />} />
                         <Route exact path='/articles/:id' render={props => <ArticlePage username={this.state.username}{...props}/>} />
