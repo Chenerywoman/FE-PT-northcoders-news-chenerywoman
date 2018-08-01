@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../styling/components/ArticleBox.css'
 
 class ArticleBox extends Component {
 
@@ -33,24 +34,20 @@ class ArticleBox extends Component {
     }
 
     render() {
-        return (<form onSubmit={this.handleClick}>
-            <h5>Add an article</h5>
-            {this.state.err ? <div> {this.state.err} </div> : <div></div>}
-            <label>
-                Choose a topic for your article:
-                <select value={this.state.topic} onChange={this.handleTopicChange}>
+        return (<form id='article-box'onSubmit={this.handleClick}>
+            <div id='article-box-title'>Add an article</div>
+            {this.state.err && <div> {this.state.err} </div>}
+            <label id='topic-select'>Topic:</label>
+                <select id='topic-select-box' value={this.state.topic} onChange={this.handleTopicChange}>
                     <option value="football">football</option>
                     <option value="coding">coding</option>
                     <option value="cooking">cooking</option>
                 </select>
-            </label>
-            <label> Title:
-    <textarea name="title" id="textbox" cols="52" rows="5" onChange={this.handleTitleChange} value={this.state.title} placeholder='add text' />
-            </label>
-            <label> Article:
-    <textarea name="article" id="textbox" cols="52" rows="5" onChange={this.handleArticleChange} value={this.state.article} placeholder='add text' />
-            </label>
-            <button type="submit" disabled={!this.state.title || !this.state.article || !this.state.topic ? true : false} >Submit</button>
+            <label id='add-title'> Title:</label>
+    <textarea name="title" id="title-box" cols="52" rows="1" onChange={this.handleTitleChange} value={this.state.title} placeholder='write your title here...' />
+            <label id='add-article'> Article:</label>
+    <textarea name="article" id="add-article-box" cols="52" rows="15" onChange={this.handleArticleChange} value={this.state.article} placeholder='add your article here...' />
+            <button id='post-button' type="submit" disabled={!this.state.title || !this.state.article || !this.state.topic ? true : false} >Submit</button>
         </form>
         )
     }
