@@ -36,6 +36,12 @@ grid-template-areas:
     margin: 2px 2px;
 }
 
+#comment-avatar {
+    border-radius: 25%;
+    border: 1px solid lightgrey;
+}
+
+
 @media (max-width: 770px) {
 
     #comment-box {
@@ -59,5 +65,4 @@ grid-template-areas:
     #comment-box-submit {
         font-size: 1rem;
     }
-
 }
