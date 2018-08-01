@@ -3,10 +3,6 @@
     grid-template-columns: 10fr;
     grid-template-rows: auto;
     grid-template-areas: 
-    /* '. article-main article-main .'
-    '. comment-box-main comment-box-main .'
-    ' . comments-title filter-comments-main .'
-    ' . comments-list-main comments-list-main .'; */
     'article-main'
     'comment-box-main'
     'comments-title'
