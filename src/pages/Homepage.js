@@ -46,9 +46,8 @@ class HomePage extends Component {
             <div>
               <h1>Welcome to NC News</h1>
                 {
-                    this.state.userlogged ? 
+                    this.state.userlogged &&
                     <p id='login1'> You are logged in as: <span id='username'> {this.props.username} </span></p> 
-                    : <div></div>
                 }
                 <form onSubmit={this.handleSubmit} id='loginform'>
                 <div className='row'>
