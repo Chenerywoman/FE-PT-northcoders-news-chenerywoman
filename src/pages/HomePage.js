@@ -49,6 +49,8 @@ class HomePage extends Component {
                     this.state.userlogged &&
                     <p id='login1'> You are logged in as: <span id='username'> {this.props.username} </span></p> 
                 }
+                { this.state.users.length ? 
+                <React.Fragment>
                 <form onSubmit={this.handleSubmit} id='loginform'>
                 <div className='row'>
                 <div className='col-12'>
@@ -65,14 +67,17 @@ class HomePage extends Component {
                   </div>
                  
                 </form>
-                <div className='row'>
-                <div className='col-6'>
-                <button id='button-articles'><Link id='articles-link' to={`/articles`} >go to articles</Link></button>
-                </div>
-                <div className='col-6'>
-               <button id='button-postarticle'> <Link id='postarticle-link'to={`/articles/postarticle`} >post an article</Link></button>
-                </div>
-                </div>
+                 <div className='row'>
+                 <div className='col-6'>
+                 <button id='button-articles'><Link id='articles-link' to={`/articles`} >go to articles</Link></button>
+                 </div>
+                 <div className='col-6'>
+                <button id='button-postarticle'> <Link id='postarticle-link'to={`/articles/postarticle`} >post an article</Link></button>
+                 </div>
+                 </div>
+                 </React.Fragment>
+                : <p>loading...</p>
+                }
             </div>
         )
     }
